@@ -1,0 +1,738 @@
+\section{Artificial Neural Networks}
+
+Absence of neural system can deter the living organisms in adapting themselves to new environments and evolution toward more complex species. These neural systems do provide selective transmission of signals to other parts of the body, and their synaptic plasticity can result their adaptation to the new environment~\cite{floreano2008bio}. By taking inspiration from neural system, many scientists today are taking advantage of artificial nets that their weights and cascade connection resembles such mechanism in synaptic transmission of data in biological organisms. Trends toward imitating from neural systems segregates into two distinct approaches: neuromorphic computing, which imitate from neural systems as they are, and behavioral implementations, that takes only an abstract view from neurons.
+
+Deep learning is one of the machine learning techniques, and is comprised of feedforward neural networks (FNNs) and recurrent neural networks (RNNs). FNNs only depend on the non-linear results of the previous layers to make inference, but RNNs are capable of using their internal state that make them suitable in processing of sequence data such as speech recognition, DNA processing, and word analysis.
+
+Looking at the fact that how brain's vision works have already inspired researchers in deep learning. Studying visual cortex of cats shows hierarchical inference in their brain which means their mind firstly detect simple structures, such as edges, and then perceive more complex features of the objects ~\cite{hubel1962receptive}. In the same way in deep learning architectures, the first layers usually detect simple shapes, e.g. horizontal and vertical edges, and then the latter ones deal with more complex elements. The structure of these features is shown in Figure~\ref{FeaturesDNN}, that bolsters the fact of complexity augmentation in post layers.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{deepfeatures.pdf}
+	\caption{Features in different layers of deep neural networks.}
+	\centering
+	\label{FeaturesDNN}
+\end{figure}
+
+\subsection{Feedforward Neural Networks}
+The advent of FNNs and the basic concepts behind it was firstly proposed by Warren McCulloch and Walter Pitts~\cite{mcculloch1943logical}. Figure~\ref{Neuron} provides an analogy between biological neuron and artificial one.\cite{goodfellow2016deep}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{Neuron.pdf}
+	\caption{Biological neuron and its equivalent artificial neuron.}
+	\centering
+	\label{Neuron}
+\end{figure}
+
+\subsubsection{Cost function in FNN}
+As presented in \ref{E1}, the optimal cost function in FNNs is contingent upon the appropriate weight values that can minimize the difference between the network output and the target.
+\begin{align}
+P(y | x) = \hat{y}^y\left(1-\hat{y}\right)^{1-y}.
+\label{E1}
+\end{align}
+In this align, $X$ is the input vector, $y$ is the target and $\hat{y}$ is the output of the network, that is equal to $\hat{y}=g(W^{T} X+b)$, which is defined as restricted sum of production of inputs and weight values. The function that is applied on sum of products ($z=W^{T} X+b$) is called activation function. In \ref{E2}, three significant activation functions, sigmoid, ReLU, and tanh, in deep learning applications is illustrated.
+
+\begin{eqnarray}
+g(z)= \frac{1}{1+e^{-z}}; ~~~ sigmoid \nonumber \\
+g(z)= \frac{e^z - e^{-z}}{e^z + e^{-z}}; ~~~ tanh\nonumber \\
+g(z)= max(0,z); ~~~ ReLU
+\label{E2}
+\end{eqnarray}
+
+In each iteration, the less the slope of activation functions is, the  slower the gradient of them changes. Thus, in deep learning applications the usage of sigmoid and tanh that have smooth slopes in large and small $z$ values, specifically sigmoid function, is less common comparing to the ReLU function. However, sigmoid function is still common in the final stage of ANNs where output values should be restricted between 0 and 1 in binary classifications.
+
+Logistic regression can be obtained by applying logarithmic function on both sides of the align \ref{E1} that yields \ref{E3}. This align is called maximum likelihood estimation, and the right side of this formula should be maximized to have the most likeness to the target value.
+\begin{align}
+log P(y | x) = y log\hat{y} + \left(1-y\right)log\left(1-\hat{y}\right)
+\label{E3}
+\end{align}
+Loss function, which is equal to $l = -log P(y | x)$,  should be used for calculating error of a single training example while cost function ($J(w,b)$) is the sum of all training errors. The output prediction notation can be replaced with network output in each layer. For instance, $\hat{y}=a^{[2]}$, where $a^{[2]}$ means the output value of the second layer in an architecture with 2 hidden layers. The cost function of such network is shown in ~\ref{E4}.
+
+{\footnotesize\begin{align}
+J(w,b) = -\frac{1}{m} \sum_{i=1}^m \left(y^{(i)} log a^{[2](i)}+ \left( 1-y^{(i)} \right)log \left(1-a^{[2](i)}\right) \right)
+\label{E4}
+\end{align}}
+
+\subsubsection{Backpropagation Algorithm}
+Backpropagation is a common method for training FNNs. In Table \ref{T1} a general formula for both inference and backpropagation gradients of a network with $L$ hidden layers is presented.
+\begin{table}[t]\footnotesize
+	\centering
+	\begin{tabular}{cc}
+	Inference & Backpropagation Gradients \\
+\midrule
+$Z^{[1]}=W^{[1]}X + b^{[1]}$ & $\frac{dJ(w,b)}{dZ^{[1]}} = \frac{dJ(w,b)}{dW^{[2]^T}}\frac{dJ(w,b)}{dZ^{[2]}}\acute{g}^{[2]}\left(Z^{[1]}\right)$ \\\\
+$A^{[1]}=g^{[1]}\left(Z^{[1]}\right)$ & $\frac{dJ(w,b)}{dW^{[1]}} = \frac{1}{m} \frac{dJ(w,b)}{dZ^{[1]}} A^{[1]^T}$ \\\\
+& $\frac{dJ(w,b)}{db^{[1]}} = \frac{1}{m}\sum \frac{dJ(w,b)}{dZ^{[1]}}$ \\\\
+... & ... \\\\
+$Z^{[L]}=W^{[L]}X + b^{[L]}$ & $\frac{dJ(w,b)}{dZ^{[L]}} = A^{[L]}-Y$  \\\\
+$A^{[L]}=g^{[L]}\left(Z^{[L]}\right)$ & $\frac{dJ(w,b)}{dW^{[L]}} = \frac{1}{m} \frac{dJ(w,b)}{dZ^{[L]}} A^{[L]^T}$ \\\\
+& $\frac{dJ(w,b)}{db^{[L]}} = \frac{1}{m}\sum \frac{dJ(w,b)}{dZ^{[L]}}$ \\\\
+& $\frac{dJ(w,b)}{dZ^{[L-1]}} = \frac{dJ(w,b)}{dW^{[L]^T}}\frac{dJ(w,b)}{dZ^{[L]}}\acute{g}^{[L]}\left(Z^{[L-1]}\right)$ \\\\
+	\end{tabular}
+	\caption{Back propagation and Inference in an FNN with $L$ layers. In these aligns words in upper-case demonstrate matrix operation~\cite{ng2017cs229}.}
+	\label{T1}
+\end{table}
+After obtaining gradients in each of the $L$ layers, according to Table \ref{T1}, in a network with learning rate $\alpha$, the weight and bias values can be updated using gradient descent algorithm as \ref{E5}.
+\begin{eqnarray}
+W^{[L+1]}=W^{[L]}-\alpha \frac{\partial J(w,b)}{\partial W^{[L]}}\nonumber\\
+b^{[L+1]}=b^{[L]}-\alpha \frac{\partial J(w,b)}{\partial b^{[L]}}
+\label{E5}
+\end{eqnarray}
+The backpropagation algorithm for convolutional layers is similar to fully connected networks with the difference that backward stage in CNNs uses cross correlation operations of partial derivatives $dw$ and $db$ for error evaluation ($J(w,b)$).
+
+\subsection{Convolutional Neural Networks}
+Contrary to the basic concepts behind convolution in calculus, convolution in CNNs neglects reversing the filter and then applying an array of multiplication and addition so many people replace this name with cross correlation analysis.
+
+A typical deep neural network with CNN core consists of different steps which map features into a new dimension or extract specific behavior of the input features. When applied on multidimensional windows of input features, filters in convolutional step are almost always in odd dimensions. Applying multiplication and summation on input features results specific characteristics of raw inputs, such as vertical edges in \ref{filters}. Afterwards, a stack of processed output features will be fed into the next layer or the fully connected network (FCN) for recognizing a specific pattern. For retaining the size of output feature map, the input feature map may be padded by adding specific number of pixels next to each side of the image. In strided convolution, the convolutional filter may jump more than one step in each sampling stage. In Figure~\ref{filters}, a 3*3 vertical edge detector filter is applied on two different inputs, where Figure~\ref{filters}a is a simple image and Figure~\ref{filters}b is an image with padding. According to this figure, padded input image may result the same dimension in case the convolution filter uses stride of one.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{filters.pdf}
+	\caption{Applying filters with different padding and stride schemes.}
+	\centering
+	\label{filters}
+\end{figure}
+
+By assuming input image size is equal to $Nix\times Niy$, filter has $Nfx\times Nfy$ dimension, padding is equal to $P$, and with stride of $S$, the dimension of output feature map ($Nox\times Noy$) is calculated using~\ref{E6}.
+
+{\footnotesize\begin{eqnarray}
+Nox=\left[\frac{Nix+2P-Nfx}{s}+1\right]\nonumber\\
+Noy=\left[\frac{Niy+2P-Nfy}{s}+1\right]
+\label{E6}
+\end{eqnarray}}
+
+Convolving RGB images or input feature maps with several channels requires filters to add up the result of convolution in each one of the channels. Each one of the applied filters may also be different in different channels to enervate or augment the effect of the corresponding channel. In Figure~\ref{maping}a, a general operation is illustrated while a specific condition for an RGB image is depicted in Figure~\ref{maping}b.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{maping.pdf}
+	\caption{Applying filters on RGB image and multi channel input.}
+	\centering
+	\label{maping}
+\end{figure}
+The convolution of the input feature map ($I(i+m\times S, j+n\times S, k)$) and corresponding 4D filter ($F(i,j,k,l)$), that is provided in Figure~\ref{maping}, is formulated in \ref{E7}. In this align, $Nif$ is the input channels' number while $i$ and $j$ are the index of the row and the column of the filter. In this formula, $m$ and $n$ are the row and the column of the output feature map with the proviso that the output window is in depth of $l$ and will be added with bias $b$ in this layer.
+
+{\footnotesize\begin{align}
+O[m,n,l] = b[l] + \sum_{k=1}^{Nif} \sum_{i=1}^{Nfy} \sum_{j=1}^{Nfx} I(i+m\times S, j+n\times S, k) \times F(i,j,k,l)
+\label{E7}
+\end{align}}
+
+According to~\ref{E8}, the total number of parameters in convolution step depends on the number of input channels ($Nif$), the number of output filters ($Nof$), the dimension of the filter ($Nfx \times Nfy$), and the the total number of biases, which is equal to the number of output filters. For instance, in Figure~\ref{maping}b, if 10 filters of $3 \times 3 \times 3$ dimensions are applied on the input RGB images, that has three layers ($Nif =3$), the total number of parameters is equal to 280. The number of parameters in CNNs is greatly less than the fully connected network (FCN) with the same number of inputs and outputs. In the same condition an FCN, that has 90 hidden layer neurons ($n^l$) and 27 inputs ($n^{l-1}$), requires 2520 parameters.
+
+{\footnotesize\begin{eqnarray}
+\text{Convolution: }P_C = \left(Nif \times Nof \times Nfx \times Nfy \right) + Nof \nonumber \\
+FCN:~~ P_F = n^{l} \times n^{l-1} + n^l
+\label{E8}
+\end{eqnarray}}
+
+Fully connected networks can be considered as an extreme version of convolutional neural networks which the dimension of its input filter and output window is equal to one ($Nfx=Nox=1$ and $Nfy=Noy=1$).
+Comparing to fully connected networks, convolutional layers have the problem of high computational cost that makes them sometimes a bottleneck in hardware accelerators. In this study,  we assume the total number of operations is equal to the number of MAC units in convolutional and fully connected layers, and it is approximately calculated by using~\ref{E9}. For example, in a convolution layer with 10 filters of $3 \times 3 \times 3$ dimensions and the output layer of $3 \times 3$ size, the number of multiplication is equal to 2430 while fully connected network with the same size requires the same number of multiplications. The number of operations can be extremely high in the middle layers of CNNs where the size of the input and output feature maps is very large.
+
+{\footnotesize\begin{eqnarray}
+\text{Convolution: }C_C = \left(Nif \times Nof \times Nfx \times Nfy \times Nox \times Noy \right) \nonumber \\
+FCN:~~ C_F = n^{l} \times n^{l-1}
+\label{E9}
+\end{eqnarray}}
+
+Contrary to FCNs, three-dimensional CNNs should be flattened and rearranged to two dimensions to make multiplication operation viable in the status quo hardware accelerators. One of the well-known flattening operation is Im2col (image to column), as presented in Figure~\ref{MatrixMultiplication}, which is proposed in~\cite{chellapilla2006high}, and the authors in~\cite{suda2016throughput} utilized this method on FPGA accelerators.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{MatrixMultiplication.pdf}
+	\caption{Rearranging the three-dimensional CNNs to two-dimensional matrix multiplication by Im2col operation. (a) software-based implementation of three dimensional CNNs. (b) flattened matrix multiplication of CNNs suitable for parallel implementation in hardware accelerators.}
+	\centering
+	\label{MatrixMultiplication}
+\end{figure}
+
+Im2col, Row-major, and channel-major are three prevalent matrix multiplication presentations for CNN applications. Despite the Im2col operation ensure continuous memory access, it causes duplication of input features so it comes at the cost of the extra memory requirement. Row-major and channel-major are two other flattening operations which obviate extra memory requirement by avoiding feature replication. The main problem with row-major operation is its discontinuous access to the DRAM memory, and, similar to Im2col operation, it has an extra data reorganization procedure to offload the output of the CNN layer for the next layer. Comparing to the Im2col and Row-major operations, look at Figure~\ref{LayoutOptimization}, channel-major cancels data duplication and extra reorganization operation~\cite{guan2017fp}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{LayoutOptimization.pdf}
+	\caption{Three different flattening operations on 27 input features~\cite{guan2017fp}. (a) Im2col operation by a 2*2 filter and stride of one requires replication of input features in new dimension. (b) Row-major operation causes discontinuous access to DRAM memory. (c) an efficient flattening scheme for avoiding both memory duplication and discontinuous access.}
+	\centering
+	\label{LayoutOptimization}
+\end{figure}
+The parameter sharing capability and sparsity of connections are two main advantages of CNNs over FCNs. The parameter sharing helps CNNs to use similar filters on different sections of the image while taking the same useful responses. In addition, contrary to FCNS, that each one of the inputs are fully connected to hidden layer, the sparsity of connections in CNNs obviates the requirement of the extra number of weights.
+
+An efficient way in reducing the size of representation in CNNs is applying the pooling layer, as presented in Figure~\ref{pool}, with specific filter ($f$) and stride ($s$) size. Today, most of applications use max-pooling layer; however, the average pooling is a common method in applications that require to shrink input features into a one by one dimension output. In contrast with convolutional operation, the pooling layer operations occur on each input channel independently and there is no parameter for learning procedure. In pooling layer, the size of the filter ($f$), the number of strides ($s$), and the type of the pooling (max or average) are the only hyperparameters to choose from.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{pool.pdf}
+	\caption{Average and max pooling with different strides and size of filters.}
+	\centering
+	\label{pool}
+\end{figure}
+
+\subsection{Popular DNN models}
+The DNN was firstly introduced for practical applications by LeCun et. all and since then many different dense models are proposed. Models sucha as GoogLeNet and VGG16, as illustrated in Figure~\ref{OperationsParameters}, propose a denser networks as to enhance the accuracy. As illustrated in this figure, the latest layers that incorporate FCNs require more parameters as the required number of weights increases. However, the number of operations is contingent upon the dimension of the input and output feature map and the dimension of these windows. Consequently, as shown in Figure~\ref{OperationsParameters}, CNN layers that are the first sections in DNNs demand more operations than fully connected networks in the final layers.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{OperationsParametersColor.pdf}
+	\caption{The number of operations and Parameters in some of the DNN models.}
+	\centering
+	\label{OperationsParameters}
+\end{figure}
+
+
+\subsubsection{LeNet}
+Applying convolutional neural networks (CNN) on computer vision applications was firstly introduced by LeCun et. all in \cite{lecun1998gradient}. In their paper, authors proposed a deep learning architecture, named LeNet-5, which had a CNN core, was trained using MNIST dataset, and was applied on commercialized banking system.
+LeNet comprises 7 layers, 2 convolution, 2 pooling, 2 fully connected, and one output layer. As shown in Figure~\ref{Lenet} the number of parameters increases dramatically in the three fully connected layers. It is also evident that in deep layers the depth of the CNNs increases while the size of the windows is decreasing.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{Lenet.pdf}
+	\caption{LeNet architecture for character recognition task.}
+	\centering
+	\label{Lenet}
+\end{figure}
+\cite{liu2016automatic}
+\subsubsection{AlexNet}
+AlexNet is considered as a novel technique in deep learning and despite it shows great similarity to LeNet-5 it has some distinct differences. For example, all the average pooling layers in AlexNet are replaced with max pooling layers, by using padding scheme some layers have the same size in output feature map. By following the works from Nair and Hinton~\cite{nair2010rectified}, authors replace sigmoid activation function with ReLU units to dramatically decrease the training time. Although ReLU units can obviate normalization scheme for avoiding saturation problem in layers, the authors in AlexNet design used local response normalization as a matter of generality. However, this technique is abolished in CNN designs after AlexNet. Normalization, that its align is presented in \ref{EE10}, happens after each one of the first two convolution layers.
+
+{\footnotesize\begin{eqnarray}
+b_{(x,y)}^i = a_{(x,y)}^i\left(k + \alpha \sum_{j=max(0,\frac{i-n}{2})}^{min(N-1,\frac{i+n}{2})} \left(a_{(x,y)}^j\right)^2 \right)^\beta
+\label{EE10}
+\end{eqnarray}}
+
+In EE10, the normalization occurs on the activity $a_{x,y}^i$ that is gained by applying kernel $i$ on the position $(x,y)$ of input feature map. Here, $k$, $n$, $\alpha$, and $\beta$ are hyper-parameters.
+
+
+As shown in Figure~\ref{Alexnet}, Alexnet consists of more than 60 million parameters that is about 1000 times as many parameters that LeNet-5 uses. GPUs made such large designs practicable, and the authors limited their design on the amount of available memory in GPUs. They reported more than 10\% decrease in error rate comparing to their rivals in ILSVRC contest for ImageNet database.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{Alexnet.pdf}
+	\caption{Alexnet model for ImageNet competition.}
+	\centering
+	\label{Alexnet}
+\end{figure}
+AlexNet also uses Dropout regularization scheme, as illustrated in~\ref{Dropout} to avoid over-fitting problem in deep convolutional neural networks. This technique disconnect random neurons in hidden layers, and it is equivalent to regularization scheme which shrinks weight values for avoiding over-fitting problem.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{Dropout.pdf}
+	\caption{Dropout regularization for avoiding overfitting problem in deep learning architectures.}
+	\centering
+	\label{Dropout}
+\end{figure}
+
+\subsubsection{VGG-16}
+By increasing the depth of the CNN architecture and using small $3 \times 3$ convolution filters, as illustrated in Figure~\ref{VGG16}, authors in~\cite{simonyan2014very} proposed a more accurate design that won ImageNet challenge in 2014. The affix that is attached to VGG shows the number of layers in this network.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{VGG16.pdf}
+	\caption{VGG16 architecture for ImageNet competition.}
+	\centering
+	\label{VGG16}
+\end{figure}
+
+\subsubsection{GoogLeNet}
+Authors in \cite{szegedy2015going} proposed another CNN architecture which remarkably reduces the number of parameters comparing to the previous models. Their method allows reaching to deeper models while avoiding significant increase in computation and the number of parameters. By taking inspiration from network in network architecture~\cite{lin2013network}, they applied $1 \times 1$ filters and truncated the depth of input feature map. This method helped them to introduce a new technique, as presented in  Figure~\ref{inception}, that enables going into the deeper models and it diminishes the side effects on computation and parameter limit.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{inception.pdf}
+	\caption{Inception module in GoogLeNet architecture. Fictitious numbers for input and output feature map are considered just to demonstrate the effect of dimensionality reduction on the number of computations and parameters.}
+	\centering
+	\label{inception}
+\end{figure}
+The GoogleNet architecture is illustrated in Figure~\ref{GoogleNet}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{GoogleNet.pdf}
+	\caption{GoogleNet architecture for ImageNet competition.}
+	\centering
+	\label{GoogleNet}
+\end{figure}
+
+\subsubsection{ResNet}
+Similar to biological neural system, deep neural networks tend to learn features in hierarchical format which is about learning simplest features in lower layers and then based on that learn more complex features in deeper layers. Therefore, according to this phenomenon, the deeper the models are, the more accurately they can learn. However, vanishing and exploding gradients impede design and implementation of deeper neural network architectures, and it is necessary that the corresponding architectures undergo the preliminary initialization and normalization schemes~\cite{glorot2010understanding}. Without this method, in deeper networks, saturation in accuracy occurs and the deeper models tend to have higher training error.
+
+In~\cite{he2016deep}, authors obviate accuracy degradation in deep architectures by introducing deep residual learning framework that enables designing and implementation of blocks of dozens of layers. In this research, short-cuts provide identity mapping (referenced mapping) that helps optimization to be more robust to vanishing. In Figure~\ref{ResNet}, both plain and ResNet architectures are illustrated. In case the weight decay problem significantly reduces the weight values in current state ($Z^{[l+2]}$ in Figure~\ref{ResNet}), the identity matrix ($a^{l}$) helps preserve the information without ensuing any computational burden on back-propagation step.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ResNet.pdf}
+	\caption{Plain architectures and the proposed ResNet for ImageNet competition.}
+	\centering
+	\label{ResNet}
+\end{figure}
+
+\subsubsection{SqueezeNet}
+The authors in \cite{iandola2016squeezenet} proposed a novel architecture, named SqueezeNet, that could attain the same accuracy of AlexNet with 50x fewer number of parameters. Truncation in the number of parameters helps reducing communication across servers during training, decreases bandwidth requirement for exporting new model from the cloud to the target design, and the final design is more feasible to be used in FPGAs and other hardware with limited memory.
+
+To gain a CNN architecture with fewer number of parameters, the authors in this research define three design strategies. First, they replaced the $3\times 3$ filters with $1 \times 1$ filters to consume 9x fewer parameters. Second, they reduced the number of input channels to $3 \times 3$ filters by defining squeeze layers. Third, down-sampling late in the model to create convolution layers with large activation maps. Down-sampling occurs when applying filters or pooling with strides greater than 1 on input feature-map. In case early layers be down-sampled first, most of the layers will have small activation maps while down-sampling late in the model ensues large activation map in many layers. The previous work by \cite{he2015convolutional} proved that, in the same condition of the other models, delayed down-sampling increases accuracy.
+
+As illustrated in Figure~\ref{SqueezNetMobileNet}, the SqueezeNet architecture uses Fire modules which should satisfy the predefined strategies. The Fire modules are comprised of squeeze convolution layer (combination of $1 \times 1$ filters) which precede expand layer that consists of $1 \times 1$ and $3 \times 3$ convolutions. To satisfy the strategy 2 in Squeezenet for limiting input channels, the number of squeeze layer filters ($s_1\time 1$) should be less than the total number of expand layer ($e_{1\times 1} + e_{3 \times 3}$) filters.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{SqueezNetMobileNet.pdf}
+	\caption{SqueezeNet and MobileNet Architectures.}
+	\centering
+	\label{SqueezNetMobileNet}
+\end{figure}
+
+\subsubsection{MobileNet}
+Although the SqueezeNet architecture mainly concentrates on reducing the number of parameters, the most important characteristic of MobileNet, that is proposed by authors in~\cite{howard2017mobilenets}, is reducing latency by truncating the number of MAC operations. Contrary to a standard convolutional neural network which applies filters on inputs and create output feature map simultaneously, the MobileNet model is based on depth-wise separable convolutions which means segregating each convolutional step into to two separate stages. As presented in Figure~\ref{SqueezNetMobileNet}, these two stages are point-wise and and depth-wise convolution. In point-wise step $1 \times 1$ filters will be applied on input feature map while one filter will be applied on input feature map in depth-wise step. According to align \ref{E9}, $1 \times 1$ filters in point-wise step only require $Nif \times Nof \times Nox \times Noy$ operations, and the depth-wise filter demands $Nfx \times Nfy \times Nof \times Nox \times Noy$ number of operations. Therefore, the two step implementation reduces the number of operation by factor of $\frac{1}{Nfx \times Nfy}+\frac{1}{Nif}$ as shown in \ref{EMobileNet}.
+
+{\footnotesize\begin{align}
+\frac{C_{MobileNet}}{C_{Conv}}=\nonumber\\\frac{PWConv+DWConv}{C_c}=\nonumber\\\frac{Nif \times Nof \times Nox \times Noy + Nfx \times Nfy \times Nof \times Nox \times Noy}{Nif \times Nof \times Nfx \times Nfy \times Nox \times Noy }
+\nonumber\\=\frac{1}{Nfx \times Nfy}+\frac{1}{Nif}
+\label{EMobileNet}
+\end{align}}
+
+\subsection{Popular DNN Datasets}
+
+\subsubsection{MNIST}
+MNIST is a subset of a larger dataset named NIST and the first dataset that LeCun et. al.~\cite{lecun2010mnist} used for commercial deep learning applications. This dataset comprises 60,000 training set and 10,000 testing set.
+
+\subsubsection{CIFAR 10}
+Authors in~\cite{krizhevsky2009learning} collected a new dataset of coloured image that outperform previous tiny coloured image dataset of MIT and NYU. In this research, CIFAR-10 set has 6000 examples for each one of the 10 classes while CIFAR-100 set has 600 examples for each one of the 100 non-overlapping classes.
+
+\subsubsection{ImageNet}
+From 2010 to present, ImageNet dataset is considered as a touchstone for significant computer vision contests \cite{russakovsky2015imagenet}. For computer vision competitions, Image-Net dataset has 1000 object classes which approximately 1.2 million images of it are for training, 50 thousand for validation, and 100 thousand for testing procedure. Figure~\ref{ImageNetCompetition} shows the number of operations and parameters along with the accuracy of some of the models for ImageNet competition.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ImageNetCompetition.pdf}
+	\caption{The accuracy of winner models based on ImageNet dataset with different number of operations and parameters.}
+	\centering
+	\label{ImageNetCompetition}
+\end{figure}
+\begin{table*}[ht]
+\centering
+\begin{tabular}{rlrrrr}
+  \hline
+ & Size & Training.Examples & Validation.Examples & Testing.Examples & Classes \\
+  \hline
+MNIST & 28*28 & 60000 &  & 10000 &  10 \\
+  ImageNet & dyn & 1229413 & 50000 & 100000 & 1000 \\
+  CIFAR 10 & 32*32 & 50000 &  & 10000 &  10 \\
+   \hline
+\end{tabular}
+\caption{The overall characteristics of different deep-learning datasets.}
+\label{datasets}
+\end{table*}
+
+\subsection{FPGA accelerators for deep learning}
+Due to the fact that training deep learning applications is a computation-intensive and the available models consume enormous time for tuning and training procedure, it seems more appropriate to implement them in CPUs and GPUs instead. By the way, some researches have already focused on training CNNs by using FPGAs. The first trainable accelerator for FPGAs was proposed by zhao et. al. in~\cite{zhao2016f}. This paper proposes a trainable hybrid FPGA/CPU accelerator for CNN applications which outweighs common CPU and GPU implementation in speed and power respectively. Authors in \cite{zhiqiang2017FPGA} concentrate on loop unrolling and inherent parallelism in FPGAs to propose an accelerator that can outweigh the traditional software implementation by 5.7 to 10.7 factors. Due to the fact that stochastic gradient descent requires fewer training examples for each epoch, that reduces resource utilization, many of these FPGA implementations integrate this algorithm in their model. Kara et. al. in \cite{kara2017fpga} propose stochastic quantization, as a new compression technique, to attain a low-precision data for stochastic gradient descent algorithm that greatly enhances speed and reduces resource consumption. The final model achieves a great order of magnitude speedup for training procedure comparing to the full precision counterpart.
+
+Memory, power, and the number of resources are three critical parameters in FPGA design and implementation. As mentioned earlier, Convolutional operation in CNNs is mostly computational centric because of its great number of multiplication operations while the fully connected layers demand extensive memory for saving weight values. The weight values can be stored in external memory with the cost of memory bandwidth that directly influences speed.
+
+\subsection{FPGAs Critical Parameters}
+
+\textbf{Data Type Organization: }
+Data-type plays a key role in area consumption, performance, and accuracy of hardware accelerators. Both dynamic fixed-point and custom precision floating data-types show great robustness to the accuracy of CNN FPGA accelerators. Authors in~\cite{DiCecco2017FPGA} consider custom floating point precision in their implementation that is comprised of exponent width of 6 and mantissa width of 5. They claim this flexible floating point training scheme for MNIST and CIFAR-10 datasets attains accuracy within 0.18\% and 0.029\% of single precision floating-point (fp32) respectively.
+
+\textbf{Storage Management: }
+Large scale CNNs require intense memory, in hundreds of megabytes order, to store weight and input values that is completely beyond the available space in FPGA platforms. These large scale CNNs enforce authors to exploit off-chip memory which in turn causes communication bandwidth problem and great decrease in design throughput. Data quantization and innovative encoding schemes, such as the customized neural network proposed by Samragh et. al.~\cite{samragh2017customizing}, are considered as a worthwhile solution for diminishing or omitting off-chip memory requirement.
+
+Introducing operational intensity, instead of arithmetic intensity and machine balance, authors in \cite{williams2009roofline} proposed a new model for evaluating the performance of processors. Unlike previous models, that analyse the traffic between processor and cache, this technique estimate the traffic between the cache memory and DRAM. It also works with kernels with operations other than arithmetic. The term operational intensity in this model means the number of operations per byte of DRAM access that relates the performance of the system to the number of access to the off-chip memory. The final result of this model is a two dimensional graph that incorporates floating-point performance, operational intensity, and memory performance. The Y-axis in this graph is attainable floating-point performance in GFlops/sec, and the X-axis presents the operational density in Flops/DRAM byte accessed. Maximum attainable floating point performance can be yield by the formula in \ref{EqRootline} in which operational intensity defines the computation to communication ratio.
+\begin{eqnarray}
+\textrm{Maximum attainable performance}  =\nonumber\\ Min(\textrm{Peak floating point performance},  \nonumber\\
+ \textrm{Memory Bandwidth} \times \textrm{Operational intensity})
+\label{EqRootline}
+\end{eqnarray}
+
+The roofline model does not change per kernel since it presents the performance of a multi-core system once it is fabricated. The x-coordinate of ridge point in this figure provides the minimum operational intensity for achieving the maximum performance. Bytes per second which is the result of (GFlops/second)/(GFlops/Byte) shows a line with 45-degree angle, and the horizontal line demonstrates the limitation of the floating-point performance of a kernel. The term \textquotedblleft roof \textquotedblright in roofline model is because of its shape that comprises horizontal and diagonal lines. Depending on roofline model of the processors the operational intensity of kernels may be compute bound or memory bound. For example, in processor 2 of Figure \ref{RoofLine}, the algorithm 1 is memory bound since it hits the diagonal part of the graph while intersection with the horizontal line and diagonal part means algorithm 2 is operational bound for processor 2 and memory bound for processor 1. In this figure, the algorithm 2 can cover more computational resources and gains better performance comparing to algorithm 1. According to the two distinct processors in this figure, the farther the ridge point from the origin is, the more operational intensity the algorithms need to reach the maximum performance. As illustrated in this figure, both processor 1 and processor 2 have the same DRAM channels, as their diagonal line overlaps, so they have same peak memory bandwidth, but differ in peak floating-point performance.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{RoofLine.pdf}
+	\caption{Roofline model for analysing the relationship between performance and off-chip memory access.}
+	\centering
+	\label{RoofLine}
+\end{figure}
+
+According to the Figure~\ref{RoofLine}, the implementation $A$ requires more bandwidth to achieve the corresponding performance, and in real world this design may operate in $A'$ location. Two other implementation, the design $B$ and the design $C$, demonstrate similar performance level but differ in computation to communication ratio. The higher computation to communication ratio is, the less bandwidth the design requires so it requires fewer connections, and LUTs. Hence, the implementation $C$ seems more preferable in similar performance condition~\cite{zhang2015optimizing}.
+
+By taking inspiration from parameter hashing in \cite{chen2015compressing}, the authors in~\cite{samragh2017customizing} propose parameter encoding plan. In this paper, by using K-means clustering algorithm, the parameters will be replaced with $K$ floating point values in the dictionary. In the encoding stage, as illustrated in Figure~\ref{EncodingFactorization}, the clustered floating point values will be shown by $log(K)$ bits. The encoded parameters reduce the memory requirement from order of $32\times N$ to $log(K) \times N + 32 \times K$ where $N$ is the number of parameters.
+According to Figure~\ref{EncodingFactorization}, by using factorization method instead of conventional dot product, the number of multiplication operations will also be decreased from $N$ to $K$. This important decrease in the number of multiplication operations comes at slight increase in the number of addition from $N$ to $N+K$. Figure~\ref{CompParameterEncoding} shows the difference between the parameter encoding technique and two other implementations in resource and accuracy. This figure shows advantage of Parameter encoding technique over BNN in accuracy, but, except the DSP processors, the overall number of resources in this parameter encoding is higher than two other implementation.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{EncodingFactorization.pdf}
+	\caption{Encoding and factorization methods for $3\times3$ matrix.}
+	\centering
+	\label{EncodingFactorization}
+\end{figure}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{CompParameterEncoding.pdf}
+	\caption{Comparison of the resources and accuracy among Parameter Encoding technique in~\cite{samragh2017customizing}, BNN technique in~\cite{umuroglu2017finn}, and a regular model in~\cite{liu2016automatic} for implementations based on MNIST dataset.}
+	\centering
+	\label{CompParameterEncoding}
+\end{figure}
+
+Providing an optimal balance between on-chip and off-chip memory access is one of the significant ways in retaining the performance of the large-scale deep learning applications. In~\cite{zhang2017improving}, Zhang et. al. proved that on-chip memory bandwidth limitation is the bottleneck of OpenCL FPGA CNN implementation due to the fact that its availability is constant over the generations. However, advanced off-chip memory modules such as HBM, HMC, and bandwidth engine (BE2) have already obviated the off-chip memory problem. In this study, as presented in Figure~\ref{ProcessingElement}, by modifying the OpenCL kernel function and by creating a two-dimensional connection between PEs and local memory system, authors address the on-chip memory bandwidth limitation. The main reason for connection modification is the fact that, in CNN implementation, each vector from matrix A should be multiplied by $n$ vectors from matrix B so the data reuse and attaching the PEs to the same BRAM can greatly reduce the on-chip memory bandwidth requirement.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{pe.pdf}
+	\caption{Two-dimensional PE implementation. (a) OpenCL 2*2 PE replication controllable by the user. (b) modified PE interconnection for reducing the on-chip memory bandwidth requirement.}
+	\centering
+	\label{ProcessingElement}
+\end{figure}
+
+\textbf{Bandwidth Demand Organization:} In FPGA accelerators, the limited bandwidth may severely affect the throughput in case it is not harnessed by dedicating appropriate on-chip memory for abating the off-chip transfer requirement. By reusing the same weight value, batch processing , as shown by authors in~\cite{shen2017escher}, can have great influence on the required bandwidth of CNN accelerators. By flexible batching, Yongming Shen et. al. try to propose an optimal trade-off point between weight bandwidth and input/output bandwidth. Their model is general enough to dedicate batching for convolutional layers as well as fully connected ones so it can greatly reduce bandwidth requirement by $1.7\times$ comparing to batching only fully connected layers. In their study, convolutional layer is considered as a generalization of the fully connected layer in which each input/output vectors (X and Y) are replaced with 2D feature maps and each weight vector is replaced with a 2D kernel. Batching mechanism can be viewed as a Matrix-Matrix multiplication where $M_W$ is the $\frac{Y}{H} \times X$ weight matrix and $M_I$ is a $X \times G$ input matrix. The trade-off between bandwidth of weight and input data can be presented by partitioning $M_W$ into $\frac{Y}{H}$ flexible row blocks and $M_I$ into $G$ flexible column blocks. The parameter $H$ is defined to show the trade-off between output storage and input transfer, and the parameter $G$ is the batch size. In case $Y$ is the size of output feature vector, the output buffer that stores $Y/H$ words per image require a processor to read its inputs $H$ times. A simple batch processing model is illustrated in Figure~\ref{BatchProc}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{Batch.pdf}
+	\caption{Simple batch processing model for CNN accelerators.}
+	\centering
+	\label{BatchProc}
+\end{figure}
+According to Figure~\ref{BandwidthComp}, the research in \cite{shen2017escher} that uses batching method greatly truncates the bandwidth requirement in both AlexNet and VGG16 models comparing to the other methods.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{BandwidthComp.pdf}
+\caption{Bandwidth comparison among batching based model in \cite{shen2017escher}, a model based on SVD QNN technique in \cite{zhang2017frequency}, and an FFT based model in \cite{qiu2016going}.}
+	\centering
+	\label{BandwidthComp}
+\end{figure}
+
+
+\subsubsection{Parallelization and Algorithmic Optimization}
+One way in addressing parallelism in CNN accelerators is reducing the number of operations by techniques such as fast fourier transform (FFT). In this way, the computation intensive convolutional stage, as shown in \ref{FFTE1}, can simply be replaced with element-wise multiplication operation.
+\begin{eqnarray}
+Conv(I , F)= IFFT \left(FFT(T).*FFT(F)\right)
+\label{FFTE1}
+\end{eqnarray}
+However, the small size of the filters in deep learning applications causes extra zero-padding stage so additional operations is inevitable. Supposing $Nix=Niy$ and $Nfx=Nfy$, two-dimensional FFT transform can reduce computation complexity from the order of $\Theta (Nix^2Nfx^2)$ to $\Theta (Nix^2 log Nix)$.  One way in further reducing computational complexity is using overlap and add (OaA) technique. In this way, the input signal of the applications with small kernel size will be segregated into small $L \times L$ tiles. After padding each of these tiles to $P \times P$ windows, a $P$ point 2D FFT will occur on each of the corresponding tiles. This padding scheme will also occur on $Nfx \times Nfx$ kernel windows, and after taking $P$ point 2D FFT, the result will be multiplied with the transformed input tiles. At last, by taking two-dimensional inverse FFT (IFFT), as illustrated in Figure~\ref{OaA}, the final result will be fed into the next layer. In reconstruction procedure, each input tile will overlap with its neighbouring tile and all the overlapped spaces will be added to produce output feature map. FFT is an extreme case of OaA, with this proviso that $P$ is equal to $Nix$, and by calculating discrete convolutions, OaA method can greatly decrease the computational complexity to $\Theta (Nix^2 log Nfx)$~\cite{zhang2017frequency}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{OaA.pdf}
+	\caption{Overlap and add method.}
+	\centering
+	\label{OaA}
+\end{figure}
+
+Another way in enhancing parallelism in FPGA implementation is exploiting double buffering technique. This technique enables full overlap of memory access and computation, and it is suitable in cases that computation time is far more than the time to bring the data into the on-chip memory. On the other hand, additional buffers will impose additional burden on limited on-chip memory \cite{lu2017evaluating}.
+
+In~\cite{aydonat2017opencl}, authors proposed a compute-bound architecture, i.e., an optimized design that uses all the DSP resources efficiently. In this design, by leveraging the Winograd transform, the authors greatly reduced the number of multiplications from order of $Nox \times Noy \times Nfx \times Nfy$ to order of $Nix \times Niy$. Truncating the number of multiplication comes at the cost of extra transformation modules~\cite{winograd1980arithmetic}.
+
+For one-dimensional input with $Nix$ elements that has $Nox$ outputs with $Nfx$-tap FIR filter, denoting as $F(Nox,Nfx)$, the conventional methods require $Nox \times Nfx$ multiplications, but the winograd algorithm can take the same result by $Nix$ operations. By using winograd algorithm, $F(2,3)$ is computed in \ref{W1}~\cite{lu2017evaluating} which shows 4 multiplication operations instead of $2 \times 3 =6$ multiplications.
+
+{\footnotesize\begin{eqnarray}
+I = \left[z_0~z_1~z_2~z_3 \right]^T ~~~F=\left[x_0~x_1~x_2 \right]^T~~~O=\left[y_0~y_1 \right]^T \nonumber \\
+\left[  \begin{array}{ccc} z_0 & z_1 & z_2\\
+z_1 & z_2 & z_3
+\end{array} \right] \left[ \begin{array}{c}
+x_0\\
+x_1 \\
+x_2 \end{array} \right]
+\mbox{~=~}
+\left[ \begin{array}{c}
+m_1 + m_2 + m_4 \\
+m_2 - m_4 + m_3
+\end{array} \right]
+\mbox{~=~}
+\left[ \begin{array}{c}
+y_0 \\
+y_1
+\end{array} \right] \nonumber\\
+m_1=(z_0 - z_2)x_0,~~m_2=(z_1 + z_2)\frac{x_0 + x_1 + x_2}{2}\nonumber\\
+m_3=(z_1 - z_3)x_2,~~m_4=(z_2 - z_1)\frac{x_0 - x_1 + x_2}{2}
+\label{W1}
+\end{eqnarray}}
+
+This truncation in the number of multiplications comes in a methodical way by using transformation matrices A, B, and G, as shown in \ref{winograd2}.
+
+{\footnotesize\begin{eqnarray}
+O  = A^T \left[(GF) \bigodot (B^TI)\right] \nonumber\\
+B^T = \left[  \begin{array}{cccc} 1 & 0 & -1 & 0\\
+0 & 1 & 1 & 0\\
+0 & -1 & 1 & 0\\
+0 & 1 & 0 & -1
+ \end{array} \right]\nonumber\\
+\mbox{~~}
+G = \left[ \begin{array}{ccc}
+1 & 0 & 0 \\
+\frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\
+\frac{1}{2} & -\frac{1}{2} & \frac{1}{2}\\
+0 & 0 & 1
+\end{array} \right]
+\mbox{~~}
+A^T = \left[ \begin{array}{cccc}
+1 & 1 & 1 & 0 \\
+0 & 1 & -1 & -1
+\end{array} \right]
+\label{winograd1}
+\end{eqnarray}}
+
+For a two-dimensional winograd algorithm, that is $F(E \times E, f \times f)$, the align~\ref{winograd1} should be changed into ~\ref{winograd2}. In this align, $I$ is the input feature-map, $F$ is the convolutional filter, $O$ is the output feature-map, and $\bigodot$ is a sign for element wise matrix multiplication (EWMM) operation. The transformation matrices can be generated off-line according to the dimension of the input feature-map ($I$) and the filter ($F$). Looking at the transformation matrices in \ref{winograd1}, it is evident that the multiplication operation in transformation matrices can simply be replaced by shift operation since the matrices are comprised of $\times \frac{1}{2}$ values.
+
+{\footnotesize\begin{eqnarray}
+O  = A^T \left[U \bigodot V\right]A \nonumber \\
+U  = G F G^T ~~~ V=B^T IB
+\label{winograd2}
+\end{eqnarray}}
+
+As illustrated in Figure~\ref{Winograd}, the winograd algorithm can be implemented in 4 different stages that provide fewer multiplication while increases the number of additions.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{Winograd.pdf}
+	\caption{Winograd multiplication PE design~\cite{lu2017evaluating}.}
+	\centering
+	\label{Winograd}
+\end{figure}
+The number of DSP processors in Figure~\ref{CompFFTWinograd} substantiates the fact that FFT transformation reduces the number of operations, but this phenomenon is less meaningful for Winograd algorithm.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ICompFFTWinograd.pdf}
+	\caption{Comparison of the resource consumption among different implementation techniques in \cite{aydonat2017opencl,lu2017evaluating,shen2017escher,ma2017optimizing,sit2017quantized,zhang2017frequency,qiu2016going,liu2016automatic}.}
+	\centering
+	\label{CompFFTWinograd}
+\end{figure}
+
+
+\subsubsection{Loop Optimization}
+Convolution operation consists of four distinct levels of loops covering input feature-map and kernels so it requires a great parallelism to reduce large design space requirement. Loop unrolling, loop tiling, and loop interchange are three techniques which help to take an optimized design. Loop unrolling determines the parallelism, and hence the required size of registers and PEs. Loop tiling divides the entire data into multiple blocks to fit them into the on-chip buffers so it determines the required capacity of on-chip buffers. Finally, loop interchange shows the computation order of the loops and directly affect the data-flow between different adjacent loops.
+
+
+\begin{lstlisting}[mathescape,caption={Different Loops in CNN},label=EQLoops]
+for {l = 1 to Nof}		# Loop-4
+	for {n = 1 to Noy}		# Loop-3
+		for {m = 1 to Nox}
+			for {k = 1 to Nif}	# Loop-2
+				for {j = 1 to Nfy}	# Loop-1
+					for {i = 1 to Nfx}
+					$O[m,n,l]_{t+1} = O[m,n,l]_{t}$ +
+					$I(i+m\times S, j+n\times S, k) \times F(i,j,k,l)$
+					end for;
+				 end for;
+			end for;
+		$O[m,n,l]_{t+1} = O[m,n,l]_{t} + bias(l)$
+		end for;
+	end for;
+end for;
+\end{lstlisting}
+
+
+As illustrated in Figure~\ref{LoopUnrolling}, the loop unrolling design variables are (Pfx, Pfy), Pif, (Pox, Poy), and Pof, which denote the number of parallel computations along different feature or kernel map dimensions. According to this figure, unrolling loop-1 means the inner product of specific number of pixels and the same portion of one of the filters are customized. In loop-2, loop unrolling affect the number of input feature channels to be multiplied with the same number of channels of one of the filters. One of the kernel filters can be applied to different sections of the input feature map by unrolling the loop-3 so it puts emphasize on reusing weight values. Unrolling loop-4 causes the same input pixels to be reused on different set of kernel windows.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{LoopUnrolling.pdf}
+	\caption{Different Loop Unrolling scenarios. (a) Unrolling Loop-1. (b) Unrolling Loop-2. (c) Unrolling Loop-3. (d) Unrolling Loop-4.}
+	\centering
+	\label{LoopUnrolling}
+\end{figure}
+
+The loop tiling design variables can also be shown by (Tfx, Tfy), Tif, (Tox, Toy), and Tof which represent the portion of data of the four loops stored in local or on-chip buffers.
+
+Inter-tiling and intra-tiling loop orders are two kinds of loop interchange. Intra-tiling loop order determines the pattern of data movement from on-chip buffer to register files or PEs, and inter-tiling loop order determines the data movement from external memory to on-chip buffer. Fully unrolled loops within the tiling block (P*=T*) are set to innermost inter-tiling loops and the loops with tiling size covering the full loop dimension (T*=N*) are the innermost intra-tiling loops by default.
+
+According to the align~\ref{E7}, each one of the output pixels in CNNs can be computed by multiplication and summation over two inner loops that are named as Loop-1 and Loop-2 in Listing~\ref{EQLoops}. Partial sum is the intermediate result of this inner product operation that should be accumulated in each cycle to take the final result. The main aim of an efficient acceleration strategy is reducing the number of partial sums. High partial sum storage is mainly the result of inefficient determination of the order of the loop optimization. The partial sum storage of the inner loops can be obviated in case these loop are fully unrolled which is when the number of MAC operations is equal to the total number of multiplications ($Pm=Nm$). In case in loop-1 and loop-2, the tiling size covers full loop dimension ($Tkx=Nkx,~ Tky=Nky,~ Tif=Nif$), and these are innermost intra-tiling loops then the fewer number partial sums are required by $Pof \times Pox \times Poy$. Loop-1 and Loop-2 are not unrolled when $Pfx=1$, $Pfy=1$, and $Pif=1$.
+
+The total number of MAC operations can be determined by loop unrolling design variables as: $Pm=Pfx\times Pfy\times Pif\times Pix\times Piy \times Pof$ and the total number of multiplications is equal to: $Nm = Nif\times Nfx\times Nfy\times Nof\times Nox\times Noy$. In ideal condition the number of computing cycles per layer is equal to Nm/Pm, but the exact number of computing cycles is presented in \ref{cycles} which put into account different tiling sizes and loop unrolling strategies.
+Non-integer numbers in these aligns indicates non-optimized multipliers and external memory usage so the optimized design should make $[\frac{N}{T}]-\frac{N}{T}$ and $[\frac{T}{P}]-\frac{T}{P}$ as small as possible.
+
+{\footnotesize\begin{eqnarray}
+\#cycles = \text{inter tiling cycles} \times \text{intra tiling cycles} &\nonumber\\
+\hspace{1cm}where:\nonumber\\\text{inter tiling cycles} = [\frac{Nif}{Tif}][\frac{Nfx}{Tfx}][\frac{Nfy}{Tfy}][\frac{Nof}{Tof}][\frac{Nox}{Tox}][\frac{Noy}{Toy}],&\nonumber\\
+\text{intra tiling cycles} = [\frac{Tif}{Pif}][\frac{Tfx}{Pfx}][\frac{Tfy}{Pfy}][\frac{Tof}{Pof}][\frac{Tox}{Pox}][\frac{Toy}{Poy}]&.
+\label{cycles}
+\end{eqnarray}}
+
+Spatial data reuse and temporal data reuse are two strategies for optimizing data usage. Spatial data reuse means after fetching pixel or weights from the on-chip buffer the data can be used by several multiplier units at the same clock cycle. The temporal data reuse, however, allows usage of the same data in several consecutive clock cycles. The total number of distinct weights per cycle is equal to: $Pwt =Pof \times Pif \times Pfx \times Pfy$, and the number of distinct pixels per cycle is $Ppx = Pif\times ((Pix-1)S+Pfx)\times ((Piy-1)S+Pfy)$. The number of weights can be spatially reused with the rate of $Reuse_{wt}= \frac{Pm}{Pwt}$ and the number pixels can be spatially reused with the rate of $Reuse_{px}= \frac{Pm}{Ppx}$ \cite{ma2017optimizing}.
+
+Previous approaches in implementation of multilayer CNNs required large bandwidth and dissipated great energy since the output feature-map of each CNN layer should be stored in off-chip memory before it is called as input feature map for the next convolutional section. The research in \cite{alwani2016fused} fuses the process of several layers in CNN architectures by modifying the order of inserting data to the on-chip memory to reduce off-chip data transfer by 95\%. According to this paper, the severity of fetching input and output feature map from external memory to the on-chip memory is more serious in early layers so it is more advantageous to concentrate on applying fusion on the first five layers rather than all the convolutional layers. This decrease in the off-chip memory data calling comes at slight increase in on-chip memory usage or re-computing procedure that the authors should contend with. Figure~\ref{FusedConv}a is taken from an example in \cite{alwani2016fused} which illustrates layer fusion for two subsequent convolutional layers. In this figure, a $7 \times 7$ input feature map is convolved with $3 \times 3$ filters with stride of one in $5 \times 5$ tiles. As shown in Figure~\ref{FusedConv}a, the next tile requires loading just one column of data, but with great cost in re-computation in the intermediate layer as depicted by black squares. This re-computation step can be avoided with the cost of dedicating extra on-chip memory for reusing the results. For example, in \cite{alwani2016fused} authors mention fusing first two layers in AlexNet requires 678 million multiplication and addition that means 8.6x increase in arithmetic operations while allocating only 55.86KB of on-chip memory for reusing procedure can obviate such extra operations. However, in applications that demand small computation in each layer, such as recurrent neural networks, it has more appeal to re-compute the intermediate values.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{FusedConv.pdf}
+	\caption{Layer Fusion in \cite{alwani2016fused}.}
+	\centering
+	\label{FusedConv}
+\end{figure}
+Using multiple pyramids, as presented in~\ref{FusedConv}c, is another way in contending with extra re-computations and on-chip memory requirement. As illustrated in this figure, decomposing single pyramid into double pyramids reduces the intermediate results and the size of the input feature-map as proceeding to deeper layers so it greatly decreases re-computation or on-chip memory requirement. However, the intermediary stages require an extra read-back from off-chip memory that imposes extra bandwidth and delay. Listing~\ref{FusedConvlst}, illustrates the priority of different layers in one pyramid of fused CNN that is shown in Figure~\ref{FusedConv}. In this listing, Toy and Tox define the tile size of the base of the pyramid.
+
+\begin{lstlisting}[mathescape,caption={Different Loops in one pyramid of fused CNN},label=FusedConvlst]
+for {n = 1 to Toy}
+	for {m = 1 to Tox}
+		for {layer = 1 to Nl}
+			for {l = 1 to $N_o^l$}
+				for {k = 1 to $N_i^l$}
+					for {j = 1 to Nfy}
+						for {i = 1 to Nfx}
+						$O[m,n,l]_{t+1}^{layer} =$
+						$O[m,n,l]_{t}^{layer} + I(i+m\times S, j+n\times S, k)^{layer}$
+						$\times F(i,j,k,l)^{layer}$
+						end for;
+					end for;
+				end for;
+			$O[m,n,l]_{t+1}^{layer} = O[m,n,l]_{t}^{layer} + bias(l)^{layer}$
+			end for;
+		end for;
+	end for;
+end for;
+\end{lstlisting}
+
+By taking inspiration from fusing multiple layers in \cite{alwani2016fused}, authors in \cite{Jincheng2017Instruction} proposed a CNN accelerator that can also support winograd algorithm to further increase computational capability of deep learning applications.
+
+
+\subsubsection{Data Quantization: } CPU and GPU implementations of CNNs commonly have 32 bit floating point architecture, but experiments show such high degree of precision is full of redundancy and it is useless in large scale deep learning applications.
+By truncating the bit-width of weight and feature map values, data quantization greatly decreases both power and memory requirement. This comes by a slight reduction in accuracy. An n-bit quantization technique can represent at most $2^{n-1}+1$ bits because one bit should be dedicated to show the zero value. If weight values be represented by $W^{[l]}$, that $l$ denotes vector of weight values in the $l^{th}$ layer, the converted version of these weights can be shown by $\hat{W}^{[l]}$. These weight values are in 4D for convolution layer and in 2D for fully connected layers. The converted weights can have each one of the $P^{[l]}$ values in~\ref{E10}. In this align the P interval is $[a_1,a_n]$, and $|a_1|<|a_n|$.
+
+{\footnotesize\begin{eqnarray}
+P^{[l]}={\pm 2^{a_1},....,\pm 2^{a_n},0}
+\label{E10}
+\end{eqnarray}}
+
+In \cite{qiu2016going}, $a_1$ and $a_2$ are calculated using \ref{E11}. Here, $floor()$ is rounding to the nearest smaller integer.
+
+{\footnotesize\begin{eqnarray}
+a_1=floor\left(log_2\left(\frac{4s}{3}\right)\right)\nonumber\\
+a_2=a_1 + 1 - \frac{2^{(n-1)}}{2}\nonumber\\
+s=max\left(abs\left(W^{[l]}\right)\right)
+\label{E11}
+\end{eqnarray}}
+
+Afterwards, the converted weight value can be estimated using \ref{E12}. In this align, $P^{[l]}_{m+1}$ and $P^{[l]}_{m}$ are two consecutive element in sorted $P^{[l]}$.
+
+{\footnotesize\begin{eqnarray}
+\hat{W^{[l]}}= \left\{ \begin{array}{ll}
+\beta sgn\left(W_{l}(i,j)\right) & \frac{(P^{[l]}_m+P^{[l]}_{m+1})}{2}\leq abs\left(W^{[l]}(i,j)\right)<\frac{3P^{[l]}_{m+1}}{2}\\
+0& otherwise,
+\end{array}\right.
+\label{E12}
+\end{eqnarray}}
+
+By using dynamic quantization method, i.e., changing the bit length for weight and feature map values in different layers, Jiantao Qiu et. al. proposed a new design that greatly preserved accuracy in VGG16-SVD implementation~\cite{qiu2016going}. They reported only 0.4\% accuracy reduction. Authors in \cite{suda2016throughput} took advantage of fixed point reduced precision interpretation for convolutional and inner product weights to reduce memory and power consumption in their OpenCL implementation. In their study, the designs with weight precisions below 8 bits show steep reduction in accuracy.
+
+Incremental network quantization is another effective way in compression and optimized resource utilization that is proposed by Aojun Zhou et. al in \cite{zhou2017incremental}. In this method the weight values in each layer are segregated into two groups. In one group, weight values are converted into a power of two or zero number and the other group of weight values will be retrained to compensate the accuracy loss due to weight conversion. These retrained weight values will be target of the future weight conversion until all the weight are converted into binary representation. Applying this method on AlexNet, VGG-16, GoogleNet, and ResNets, authors in this research show that their quantized network with 5-bit, 4-bit, and 3-bit weights does not have accuracy loss comparing to 32-bit floating-point baseline. This method is used in FPGA implementation of AlexNet architecture~\cite{sit2017quantized}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{INQ.pdf}
+	\caption{Step by step representation of incremental network quantization algorithm.}
+	\centering
+	\label{ResNet}
+\end{figure}
+
+\textbf{Binarized Neural Network: } Binarized neural networks, that are an extreme version of quantized neural networks (QNN), can drastically reduce memory and power consumption due to the fact that they replace many mathematical operation with bit-wise operation. BNNs allow implementation of larger networks in lower accuracy so by this method regular CNN implementation with lower accuracies can be substituted by larger networks that are based on BNNs. In such cases, BNNs require 2-11$\times$ more parameters and precision to compete with accurate CNN implementations~\cite{umuroglu2017finn}. Since BNNs are based on bit level operations, they are appropriate for custom design platforms such as FPGAs comparing to GPUs or CPUs. In fact, BNN presents weight and neuron in +1 or -1 values, and hardware   stores +1 as 1 and -1 as 0 which not only drastically reduces memory requirement but also changes multiplication into XNOR operation~\cite{nakahara2016memory,nurvitadhi2016accelerating,nakahara2017multiscale}.
+
+In this method weight and feature map values will be either +1 or -1, and for this transformation two different binarization techniques, deterministic, as shown in~\ref{E13}, and stochastic, presented in~\ref{E14} are considered~\cite{courbariaux2016binarized}. In align \ref{E14}, $\sigma$ is hard sigmoid function, and despite this align can show superior response, it is harder for hardware implementation considering the fact that it requires generating random bits in quantization.
+\begin{eqnarray}
+x^b = Sign(x)= \left\{ \begin{array}{ll}
++1 & x \geq 0\\
+-1 & otherwise,
+\end{array}\right.
+\label{E13}
+\end{eqnarray}
+\begin{eqnarray}
+x^b = \left\{ \begin{array}{ll}
++1 & with~probability~p=\sigma(x)\\
+-1 & with~probability~1-p,
+\end{array}\right.\\
+\sigma(x)=clip\left(\frac{x+1}{2},0,1\right)=max\left(0,min\left(1,\frac{x+1}{2}\right)\right).
+\label{E14}
+\end{eqnarray}
+For reducing quantization error, BNNs have an extra batch normalization layer which linearly shifts and scales input distribution to have zero mean and unit variance. This technique obviates adding extra bias section in CNNs because, by creating a zero mean, batch normalization nullifies the effect of adding a constant value to the network in previous layers.
+\begin{eqnarray}
+y=\frac{x-\mu}{\sqrt{\sigma^2 +\epsilon}} \gamma + \beta
+\label{E15}
+\end{eqnarray}
+In \ref{E15}, $x$ and $y$ are input and output of the layer, $\mu$ and $\sigma$ show the mean and the variance of the training set, $\gamma$ and $\beta$ are the trained parameters, and $\epsilon$ is a small value for avoiding round-off problem.
+
+In Figure~\ref{BNN}, both CNN and BNN designs are compared. According to this figure, the first convolutional layer is in integer precision, but in~\cite{shimoda2017binarized}, by decomposing technique, authors consider the binary format of each one of the pixel values. In this method, each one of the bits (bitmaps) have specific value, and, by segregating these bitmaps into low-order and high-order bits, authors claim they gain more precision by replicating higher order bitmaps instead of preserving the whole range of bitmaps. This technique preserves the recognition accuracy while reducing hardware cost and increasing speed.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{BNN.pdf}
+	\caption{CNN versus BNN. In BNN design batch normalization causes adding bias value to be useless.}
+	\centering
+	\label{BNN}
+\end{figure}
+
+Using high level synthesis (HLS) design methodology, authors in \cite{zhao2017accelerating} propose a BNN FPGA implementation to address the intense memory and computational requirement of CNNs. A framework for scalable and fast BNNs is also proposed in~\cite{umuroglu2017finn}. In this research, $16 \times$ speedup outweighs $2-11 \times$ increase in the number of parameters in the expanded BNN architecture. By using streaming architecture, as presented in Figure~\ref{BNNArch}a, these authors adapted heterogeneous computational engines for each one of the CNN layers. In streaming architecture, each one of the engines initiates computation as soon as the previous engine produces output. the initiation intervals can be minimized in case computation and communication have overlap, i.e., the new image enters the first computation unit after it feeds the second computation unit.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{BNNArch.pdf}
+	\caption{BNN implementation using streaming architecture~\cite{umuroglu2017finn}.}
+	\centering
+	\label{BNNArch}
+\end{figure}
+
+In BNN framework of Umuroglu et. al., authors also organized matrix vector threshold units (MVTU), as illustrated in Figure\ref{BNNArch}b, which comprises a number of processing elements (PE) and SIMD lanes. In this unit, PEs are acting as hardware neurons and the role of SIMD lanes is similar to hardware synapse. Considering the fact that authors in this paper use positive only operation in PEs, as shown in Figure~\ref{BNNArch}c, multiplication is replaced with XNOR operation and the final product should surpass a positive threshold value in activation function. Moreover, they replaced counting signed number by an extra popcount module, that counts the number of set bits in accumulation procedure to reduce hardware cost. Figure~\ref{CompQNN} clearly shows advantage of BNNs and QNNs over other implementations in memory and Power consumption.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ICompQNN.pdf}
+	\caption{A comparison between quantized networks and other designs in \cite{aydonat2017opencl,lu2017evaluating,ma2017optimizing,shen2017escher,suda2016throughput,zhang2017improving,guan2017fp,liu2016automatic,sit2017quantized,zhang2017frequency,umuroglu2017finn,shimoda2017binarized,samragh2017customizing, zhao2017accelerating} based on power and BRAM storage consumption.}
+	\centering
+	\label{CompQNN}
+\end{figure}
+
+\textbf{Stochastic Computing: } Stochastic Computing is a design mechanism that uses the probability of ones in the uncorrelated bit-streams that are generated in specific length by stochastic number generator (SNG) unit to represent a quantity. For example, in unipolar encoding that is for representing the numbers in range of $[0,1]$, when the generated bit-stream of $X$ is equal to $10100010$, its value can be represented by $P(X=1)=\frac{3}{10}=0.3$. This value in bipolar format, which restricts the quantities in the range of $[-1,1]$, can be represented by $\frac{X+1}{2}$ which is equal to 0.7. This value can be shown by bit-stream $10111001$. Since two generated bit-streams $X$ and $Y$ are uncorrelated, the result of $P(X\wedge Y)$ is equal to $P(X)P(Y)$. This transformation in data values results simplicity as the multiplication operation can be replaced with AND and XNOR operations for unipolar and bipolar encoding respectively~\cite{ren2017sc}. However, the randomness and the length of the generated bit-streams in the SNG unit directly affect the rectitude of the computations.
+
+The authors in \cite{kim2017FPGA} propose a deep learning accelerator based on stochastic computing method that outweighs BNN counterpart in power and resource consumption.
+
+\subsubsection{Hardware Generators}
+Looking at the complexity of hardware programming, many companies have already decided to propose high level synthesis (HLS) design tools, such as SystemC and OpenCL, to reduce time to market, increase portability, and facilitate FPGA implementations. All the advantages of these HLS design tools comes at the cost of performance due to deficiency in mapping high level software codes (e.g. C++) into optimal hardware architectures~\cite{zhao2017accelerating,samragh2017customizing}. According to Figure~\ref{CompThroughputHLS}, papers based on RTL implementations still show better throughput comparing to HLS, but OpenCL designs are somewhat superior to RTL counterpart.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ICompThroughputHLS.pdf}
+	\caption{Comparison of throughput and latency of HLS, OpenCL, and RTL implementation in ~\cite{guan2017fp,shen2017escher,ma2017optimizing,zhang2017improving,qiu2016going,liu2016automatic,lu2017evaluating,zhang2017frequency,suda2016throughput}.}
+	\centering
+	\label{CompThroughputHLS}
+\end{figure}
+
+OpenCL is a task-parallel and data-parallel heterogeneous computing system, and, now, it is a novel hardware programming method for a variety of platforms such as CPUs, GPUs, DSPs, and FPGAs~\cite{stone2010opencl}. The parallel programming capability of OpenCL makes it advantageous in providing a similar basement for programming of different hardware platforms that are produced by different vendors. The portability of OpenCL comes by using particular kernel functions in different devices, but these kernels may not show maximum response in different platforms. However, many studies such as zhang et. al. in \cite{zhang2017improving}, modified these kernels to make them appropriate for different applications. The authors in this study address bandwidth limitation of the OpenCL kernels in generating FPGA RTL codes of CNN accelerators. Besides producing RTL codes, OpenCL compilers integrate interfacing IPs for managing communication between FPGA and CPU. Integration of interfacing IPs, as presented in Figure~\ref{OpenCL1}, reduces the design time, but this integration augments the on-chip memory utilization~\cite{suda2016throughput}.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{OpenCL.pdf}
+	\caption{OpenCL FPGA accelerator design flow~\cite{suda2016throughput}.}
+	\centering
+	\label{OpenCL1}
+\end{figure}
+
+Guan et. al. in~\cite{guan2017fp}, propose an OpenCL based hardware generator for a famous CNN framework named TensorFlow. In \cite{liu2016automatic}, Liu et. al. propose a Verilog code generator for LeNet and AlexNet models based on high level programming languages. HLS design is also considered as an applicable platform for other computer vision applications such as Viola Jones face detection accelerator in~\cite{srivastava2017accelerating}. Using OpenCL programming, authors in~\cite{gautier2014real} implement two prominent algorithms in 3D reconstruction. OpenVX is another c-based programming environment that is adopted for computer vision applications. Omidian et. al., in \cite{omidian2017exploring}, try to optimize the area and throughput by altering kernels in OpenVX HLS design system. By using OpenCL based design analysis techniques, authors in~\cite{yinger2017Customizable} optimize FPGA matrix accelerators. In this research, by dint of fast simulation environment in OpenCL, a nuance measurement of performance and precision with different sparsity levels on growing variety of matrix multiply operations becomes more practicable. Comparing resource consumption of OpenCL and HLS implementation with traditional RTL counterpart in Figure~\ref{CompResourcesHLS} shows great reliability of using such techniques in design and implementation of different DNN models.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ICompResourcesHLS.pdf}
+	\caption{Resource consumption of HLS, OpenCL, and RTL based papers in in~\cite{suda2016throughput,guan2017fp,liu2016automatic,zhang2017frequency,shimoda2017binarized,ma2017optimizing,lu2017evaluating,qiu2016going,shimoda2017binarized,aydonat2017opencl} for different models.}
+	\centering
+	\label{CompResourcesHLS}
+\end{figure}
+
+\subsection{\rev{Advanced Quantization Techniques}}
+
+\rev{Building upon earlier quantization work, dynamic precision adaptation has emerged as an effective approach for balancing accuracy and efficiency. Wang et al.~\cite{wang2020dynamic} proposed dynamic bit-width adaptation for CNNs on Zynq UltraScale+ devices, achieving flexible precision scaling based on runtime requirements. Liu et al.~\cite{liu2022dynamic} extended this concept with dynamic precision scaling on Versal AI Core platforms, demonstrating 2-8 bit mixed-precision inference with minimal accuracy loss. Colangelo et al.~\cite{colangelo2018exploration} conducted a comprehensive exploration of low numeric precision deep learning inference using Intel FPGAs, systematically evaluating the impact of reduced precision on accuracy and performance across various CNN architectures.}
+
+\rev{Ultra-low precision quantization has gained attention for edge deployments. Chen et al.~\cite{chen2023sub4bit} demonstrated sub-4-bit integer-only quantization for MobileNets on Zynq-7020, achieving competitive accuracy with only 2-bit weights. The BitFusion architecture~\cite{jain2020bitfusion} introduced bit-level dynamically composable hardware, supporting variable precision from 1 to 16 bits on Stratix 10 devices, enabling efficient mixed-precision inference across different network layers through dynamic bit-width composition.}
+
+\subsection{\rev{Model Compression and Pruning}}
+
+\rev{Structured pruning techniques have evolved to exploit FPGA architecture characteristics. Lee et al.~\cite{lee2023channel} proposed channel-wise structured pruning specifically optimized for FPGA systolic arrays, demonstrating effective compression on ResNet-50 while maintaining accuracy. Liu et al.~\cite{liu2024pruning} demonstrated hardware-aware structured pruning for ResNet on Kintex UltraScale+ FPGAs, achieving significant reduction in parameters with minimal accuracy degradation.}
+
+\rev{Sparse neural networks with dynamic sparsity exploitation have shown promise. Zhao et al.~\cite{zhao2022sparse} developed dynamic sparse CNN acceleration on Alveo U50, efficiently handling high sparsity levels through hardware that dynamically identifies and skips zero operations. Block circulant neural networks offer an alternative compression approach, as demonstrated by Li et al.~\cite{li2021block} for YOLOv4 on Alveo U280, leveraging structured sparsity for efficient hardware implementation.}
+
+\subsection{\rev{Hardware-Aware Neural Architecture Search}}
+
+\rev{Neural Architecture Search (NAS) has been adapted for FPGA-specific constraints. Jiang et al.~\cite{jiang2023fpganas} introduced hardware-aware NAS that considers FPGA resource constraints including LUT, DSP, and BRAM utilization during the search process. Dong et al.~\cite{dong2021hao} proposed HAO (Hardware-Aware neural architecture Optimization) for efficient inference, demonstrating automated design space exploration that co-optimizes both network architecture and FPGA hardware implementation to achieve superior performance-efficiency tradeoffs. Wu et al.~\cite{wu2023mixednas} proposed mixed-precision NAS for edge AI, automatically determining optimal bit-width allocation across layers to maximize efficiency. These automated approaches~\cite{wu2024nas} have been extended to newer Versal Premium devices, enabling design space exploration that co-optimizes network architecture and hardware implementation.}
+
+\subsection{\rev{Object Detection Accelerators}}
+
+\rev{YOLO-series implementations have evolved significantly on FPGAs. Ma et al.~\cite{ma2019scalable} demonstrated YOLOv3 deployment on Alveo U200, while Wang et al.~\cite{wang2022efficient} optimized YOLOv5s for Zynq UltraScale+ ZCU104 with INT8 quantization. More recent work by Li et al.~\cite{li2024yolov8} deployed the latest YOLOv8n architecture on Zynq UltraScale+ MPSoC for real-time edge object detection.}
+
+\rev{Domain-specific object detection has also been explored. Li et al.~\cite{li2023yolo} optimized YOLOv5m specifically for drone applications on Zynq UltraScale+ MPSoC, addressing the unique challenges of aerial object detection. Wang et al.~\cite{wang2023autofpn} proposed automated feature pyramid network design on Versal AI Core devices with hardware-aware architecture optimization.}
+
+\subsection{\rev{Modern CNN Architectures on FPGAs}}
+
+\rev{Next-generation FPGA platforms have enabled larger models and higher throughput. Zhang et al.~\cite{zhang2019fpdeep} demonstrated ResNet-50 acceleration on Virtex UltraScale+ VU9P with high throughput using 16-bit fixed-point precision. Ma et al.~\cite{ma2019scalable} proposed scalable and modularized RTL compilation of convolutional neural networks onto FPGAs, enabling automated generation of optimized hardware implementations from high-level network descriptions. Guo et al.~\cite{guo2019angel,guo2022angel} presented the Angel-Eye design flow for MobileNet architectures on Zynq UltraScale+ platforms, providing a complete mapping solution from high-level descriptions to FPGA implementations.}
+
+\rev{The EfficientNet family has been successfully deployed on modern FPGAs. Ma et al.~\cite{ma2024efficient} deployed EfficientNetV2-S on Intel Agilex I-Series with progressive training techniques. Zhao et al.~\cite{zhao2024efficient} demonstrated EfficientNet-B4 on Versal Premium VP1802, leveraging AI Engines for matrix operations. Wang et al.~\cite{wang2020dynamic} explored EfficientNet-B0 on Zynq UltraScale+ ZCU104 with dynamic precision adaptation.}
+
+\rev{MobileNet variants continue to be popular for edge deployments. Huang et al.~\cite{huang2023mobilenetv3} implemented MobileNetV3-Large on Zynq-7000 with depthwise convolution optimizations for resource-constrained platforms. Chen et al.~\cite{chen2024edge} demonstrated ultra-low-power MobileNetV2-0.5x deployment on Artix-7 FPGAs for battery-powered edge devices.}
+
+\subsection{\rev{Advanced Optimization Methods}}
+
+\rev{Winograd transform optimization has been refined for modern FPGAs. Zhao et al.~\cite{zhao2020winograd} proposed Winograd-based convolution for ResNet-18 on Virtex UltraScale+ VU13P, demonstrating reduced computational complexity over direct convolution while maintaining accuracy.}
+
+\subsection{\rev{Binary Neural Networks Evolution}}
+
+\rev{BNN implementations have continued to improve with better frameworks and hardware support. Blott et al.~\cite{blott2020finn} presented FINN-R, an end-to-end framework for quantized neural networks on Alveo U250, providing automated compilation from high-level network descriptions. Chen et al.~\cite{chen2021bnn} demonstrated BNN AlexNet on Zynq-7020 with extremely low power consumption, suitable for resource-constrained edge devices. Yang et al.~\cite{yang2023person} explored binary neural networks for person re-identification on Cyclone V FPGAs, demonstrating BNN applicability beyond image classification.}
+
+\subsection{\rev{Sparse Neural Network Acceleration}}
+
+\rev{Exploiting sparsity in neural networks has emerged as a critical optimization strategy. Lu et al.~\cite{lu2019efficient} proposed an efficient hardware accelerator for sparse convolutional neural networks on FPGAs, demonstrating significant improvements in throughput and energy efficiency by dynamically detecting and skipping zero-valued operations. Their architecture efficiently handles irregular sparsity patterns through specialized dataflow and indexing schemes, achieving superior resource utilization compared to dense implementations.}
+
+\subsection{\rev{Training and On-Device Learning}}
+
+\rev{Beyond inference, CNN training acceleration has been explored. Zhang et al.~\cite{zhang2019fpdeep,zhang2021fpdeep} demonstrated scalable training acceleration and load balancing on FPGA clusters for deep CNN architectures, achieving significant speedup over GPU-based systems through optimized data distribution and pipeline parallelism. Wang et al.~\cite{wang2024incremental} explored incremental learning on Zynq UltraScale+ ZCU104, enabling on-device model adaptation for continual learning scenarios. Their work addresses the challenge of catastrophic forgetting while maintaining efficient hardware resource utilization for edge deployment.}
+
+\subsection{\rev{Recurrent Neural Network Optimization}}
+
+\rev{Recurrent Neural Networks (RNNs), including LSTM and GRU variants, present unique challenges for FPGA acceleration due to their sequential dependencies and complex gating mechanisms. Que et al.~\cite{que2020optimizing} proposed optimizations for reconfigurable recurrent neural networks on FPGAs, addressing the challenge of efficiently mapping temporal dependencies to hardware while maintaining high utilization. Their work demonstrates significant improvements in throughput for sequence processing tasks through careful architecture design and resource allocation strategies tailored to RNN computation patterns.}
+
+\subsection{\rev{Design Automation Tools}}
+
+\rev{Automated design flows have matured significantly. Liu et al.~\cite{liu2019dnnbuilder} introduced DNNBuilder for Intel Stratix 10, automatically generating high-performance DNN accelerators from network specifications. Ferianc et al.~\cite{ferianc2021improving} improved performance estimation for design space exploration of CNN accelerators, enabling rapid architectural optimization without full implementation. Venieris et al.~\cite{venieris2021gta} proposed GPU-to-FPGA transplantation techniques for automated CNN inference mapping. Zhang et al.~\cite{zhang2024mixed} demonstrated automated mixed-precision optimization on Versal AI Core with hardware-aware precision allocation.}

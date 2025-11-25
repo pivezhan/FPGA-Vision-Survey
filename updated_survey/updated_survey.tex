@@ -1,0 +1,79 @@
+\documentclass[conference]{IEEEtran}
+
+% Revision tracking - NEW CONTENT IN RED, NEW METRICS IN BLUE
+\usepackage{xcolor}
+\newcommand{\rev}[1]{\textcolor{red}{#1}}           % New content (2019-2025)
+\newcommand{\newmetric}[1]{\textcolor{blue}{#1}}    % New comparison metrics
+
+% To disable colors for final submission, uncomment these:
+%\renewcommand{\rev}[1]{#1}
+%\renewcommand{\newmetric}[1]{#1}
+
+% Standard packages
+\usepackage{graphicx, wrapfig, subcaption, setspace}
+\graphicspath{{figures/}}
+\usepackage{fullpage}
+\usepackage{times}
+\usepackage{fancyhdr,amsmath,amssymb}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{booktabs}
+\usepackage[compact]{titlesec}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{pgfplots}
+\usepackage[T1]{fontenc}
+\usepackage[font=small, labelfont=bf]{caption}
+\usepackage{fourier}
+\usepackage[english]{babel}
+\usepackage{sectsty}
+\usepackage{url, lipsum}
+\usepackage{hyperref}
+
+\usepackage{listings}
+\lstset{%
+basicstyle=\footnotesize\ttfamily,
+frame=single,
+tabsize=2,
+morecomment=[l][\color{green}]{*},
+morecomment=[l][\color{blue}]{\#},
+}
+
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+
+\hyphenation{Optical Networks semi-conductor}
+
+\begin{document}
+
+\title{Vision FPGA Accelerators: A Comprehensive Survey (2015-2025)}
+
+% \author{\IEEEauthorblockN{Mohammad Pivezhandi}
+% \IEEEauthorblockA{Electrical and Computer Engineering\\
+% Wayne State University\\
+% Detroit, MI 48202, USA\\
+% Email: \{mpvzhndi, zambreno\}@iastate.edu}}
+
+\maketitle
+
+%-------------------------------------------------------------------------------
+% BODY - Sections marked with \rev{} contain NEW content (2019-2025)
+%-------------------------------------------------------------------------------
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/feature_extraction}
+\input{sections/neural_networks}
+\input{sections/transformers}        % NEW SECTION
+\input{sections/spiking_networks}
+\input{sections/edge_ai}            % NEW SECTION
+\input{sections/conclusion}
+
+%-------------------------------------------------------------------------------
+% REFERENCES
+%-------------------------------------------------------------------------------
+\bibliographystyle{ieeetr}
+\bibliography{sections/updated_refs}
+
+\end{document}

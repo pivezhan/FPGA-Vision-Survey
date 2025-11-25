@@ -1,0 +1,19 @@
+\section{Introduction}
+For years, computational and data-set limits served as a deterrent factor in the practicality of vision algorithms based on non-von Neumann architectures. The compute limit was less a problem by abrupt advances in fabrication technology following Moore's law. Having billions of nano-scale transistors allowed the advent of configurable heterogeneous architectures such as GPGPUs and SoC FPGAs. Moreover, the availability of the large-scale dataset made it viable to use these architectures for inherently parallel bio-inspired deep learning methods~\cite{lecun1998gradient, sze2017efficient}.  Although ASIC chips give us a fast and power-efficient result for deep learning applications, they have costly version control due to technology enhancement. Reconfigurable computing on FPGAs makes the whole design independent from Moore's law since we can map the generic hardware description language easily to the new technology. The whole purpose of FPGAs is filling the gap between entirely software and hardware solution for each kind of application \cite{kilts2007advanced, kuon2008fpga, chen2006fpga, dehon1999reconfigurable}.
+
+For vision processing, we can either extract features and descriptors from the input data or predict by training an end to end learnable data-centric method. Feature extraction algorithms use mathematical definitions such as gradient calculation and Fourier analysis to extract contours, edges, flow, and etc. On the other hand, the learnable algorithms process features after training on available data.  One example is conventional deep neural networks that provide a non-von Neumann parallel solution for vision applications. The non-von Neumann architectures do not need mapping programs sequentially to the instructions inside the memory. Thus, they enable edge processing and reduce the time and energy we need to transfer data from the memory to the compute unit. However, having a full precision analog features and weight values for conventional deep nets is both energy inefficient and memory intensive. By applying quantization techniques on full precision data and pruning unimportant connections are two important techniques that help reducing computation and storage. Another solution for reducing energy consumption and computation would be emulating from biological neurons and feed neural nets with spikes. Spiking neural networks reduce the computation as we evaluate digital inputs on a timing basis whenever a spike comes. This neuromorphic system revolves around the pioneering mathematical model from Hodgkin and Huxley based on the squid giant axon \cite{hodgkin1952quantitative}.
+
+
+This work tries to provide a comprehensive alternative for the other related vision surveys on FPGAs \cite{venieris2018toolflows, wang2018survey, abdelouahab2018accelerating, guo2017survey, hamzah2016literature, garcia2014survey}.
+
+
+This survey addresses the following issues:
+\begin{description}
+\item[$\bullet$] A comprehensive analysis of vision algorithms and their potential implementation.
+
+\item[$\bullet$] Covering papers in top FPGA conferences and their optimization methods.
+
+\item[$\bullet$] Comparing paper results based on device, resources, power, and throughput.
+
+\item[$\bullet$] Conclusion on the best vision algorithms for energy efficient and real time processing.
+\end{description}

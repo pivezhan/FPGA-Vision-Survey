@@ -1,0 +1,140 @@
+\section{Feature extraction methods}
+The visual system, as shown in Figure~\ref{NeuralProcessing}a, comprises rods and cones that sense stimuli of different wavelengths. This visual system accumulates the weighted logarithmic response from input stimuli to reflect chrominance (color) and luminance (brightness). For instance, we detect the changes in brightness if half of the weights be positive and another half be negative. The result would feed the associative cortex for linking objects and the occipital cortex for processing patterns. As shown in Figure~\ref{NeuralProcessing}b, the vision system can also extract features such as edges and corners to detect objects \cite{nixon2019feature}. Detecting edges and corners help human to compare noisy and disturbing images very quickly and accurately. In \cite{hubel1979brain}, the authors also claim we have different levels of response from visual cells.  The simpler cells track the general structure of the scene and feed the result to the cells that detect the full texture complexity. Inspiring from this phenomenon in vision processing, we extract interest points from multiple pixels instead of the pixel-by-pixel processing. This evaluation of multiple pixels helps to handle distortion and enhances the image recovery at the end.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{NeuralProcessing.pdf}
+	\caption{Neural vision processing. a) structure of input to the human visual system b) sensitivity of the human visual system to the edges\cite{nixon2019feature}.}
+	\centering
+	\label{NeuralProcessing}
+\end{figure}
+
+In this section, we evaluate several feature extractions methods that can detect stable interest points from the scene. A perfect interest point has: (1) a well-founded mathematical definition; (2) has a clear, well-organized position in the image; (3) information-intensive surrounding pixels; (4) stable under different perturbations and affine distortion \cite{bouris2010fast}.
+
+\subsection{Feature Extraction Algorithms}
+In feature extraction algorithms, after extracting descriptors from the image frame, we compare them with the descriptors extracted from the available labeled dataset to make predictions. The more descriptors we can extract from the image frame and the more these descriptors are robust to scale and orientation, the better accuracy we can attain.
+
+\subsubsection{Harris Corner Detection (HCD)}
+Harris et. al were among the pioneers concentrating on detecting edges and corners based on feature extraction methods~\cite{harris1988combined}. They used their algorithm, named harris corner detection (HCD), for extracting the 3D locations of the objects. By shifting a local window by a small amount, this algorithm considers three scenarios: scenarios: 1) when the local window covers flat image patches, it results in small changes. 2) local window that moves perpendicular to the edges shows maximum changes while moving along the edges show small changes. 3)  the window that moves over the corners show a large change in every direction. The autocorrelation function in \ref{lof1} satisfies all these scenarios. Here, $w_{u,v}$ is a circular weight window based on the Gaussian function to avoid noisy response in rectangular equivalent. A small movement $(u,v)$ of the local window over on pixel p(x,y) creates a curvature like intensity change centered on this weight window. The equation \ref{lof1} can changes into \ref{lof2}, in which the symmetric matrix M(x,y) describes the shape of window in origin pixel. By extracting the eignevalues $\alpha$ and $\beta$ of $M(x,y)$, this descriptor matrix becomes rotationally invariant. In case both $\alpha$ and $\beta$ are larger than specific threshold line, they demonstrate corner region, and when only one of these eigenvalues is larger than the specific value the window detects edge region~\cite{lam2017lowering}. As shown in \ref{lof3}, for avoiding eigenvalue decomposition, we calculate the ratios by the trace ($Tr(M)$) and the determinant ($Det(M)$). In this equation, $k$ is an empirical value in range between 0.4 and 0.6. Corner regions have positive $R$ values, and the negative $R$ values represent edge regions. In non-maximal suppression stage, we compare $R$ to a threshold value $T$ and, to avoid unnecessary storage requirement, we set non-corner $R$ values less than $T$ to 0.
+
+\begin{eqnarray}
+E_{x,y} = \sum_{u,v} w_{u,v} |I_{u+x,y+v}-I_{u,v}|^2\nonumber\\
+w_{u,v} = exp –(u^2 + v^2)/2 \sigma^2
+\label{lof1}
+\end{eqnarray}
+
+\begin{eqnarray}
+E_{x,y} =(x,y)M(x,y)^T\nonumber\\
+M = \begin{bmatrix} A & C\\ C & B \end{bmatrix}\\
+A=\sum_{u,v}(\frac{\partial I}{\partial x})^2 w(x,y)\nonumber\\
+B=\sum_{u,v}(\frac{\partial I}{\partial y})^2 w(x,y)\nonumber\\
+C=\sum_{u,v}(\frac{\partial I}{\partial x}) (\frac{\partial I}{\partial y}) w(x,y)\nonumber\\
+\label{lof2}\nonumber
+\end{eqnarray}
+
+\begin{eqnarray}
+Tr(M)=\alpha + \beta = A+B \nonumber \\
+Det(M)=\alpha \beta = AB - C^2\nonumber\\
+R= Det(M) - k Tr^2(M)
+\label{lof3}
+\end{eqnarray}
+
+\subsubsection{SIFT}
+Due to the sensitivity of HCD algorithm to the scale variation, Lowe started to address this problem by developing a scale-invariant image descriptor from 1999 to 2004 \cite{lowe2004distinctive}. The scale-invariant feature transform (SIFT) algorithm changes the input image into scale-invariant coordinates relative to the local features. This mechanism allows matching descriptors to a vast range of affine distortion and enables identifying a more significant number of features. For object recognition by SIFT, we can compare the new image features with the ones extracted from the available image database by calculating Euclidian distance. We use the least-square estimation for affine distortion in case three or more features from the new image match with a specific object and the pose of that object. A variety of detections happens through a probabilistic process.
+
+The SIFT algorithm consists of five stages as follows: 1) Difference of Gaussian (DoG) pyramid scale-space construction; 2) stable feature extraction; 3) Keypoint orientation and magnitude calculation; 4) Feature Descriptor Generation; 5) Detection Procedure. The first three stages in the implementation of the SIFT algorithm are regarded as feature detection steps, while the two other stages are for feature description.
+\textbf{Difference of Gaussian (DoG) pyramid scale-space construction:} For achieving invariance to the scale change, stable features in all possible scales should be identified. A continuous function known as scale-space function function ($L(x,y,\sigma)$)  searches for stable extrema across all possible scales. As shown in \ref{eqscalespace}, the scale-space function is the result of convolving the input image ($I(x,y)$) with a Gaussian function ($G(x,y,\sigma)$). The authors in \cite{mikolajczyk2002free} proved the maxima and minima of the scale-normalized Laplacian of Gaussian ($\sigma^2 \nabla^2G$) create the most stable features, and the difference of Gaussians is an approximation for it. In \ref{eqscalespace}, the approximation error is equal to zero when $k$ is 1. Since the approximation factor ($k-1$) is constant over all scales, it does not affect the location of the extrema and stability of extrema detection.
+
+\begin{eqnarray}
+G(x,y,\sigma)=\frac{1}{2\pi \sigma^2}e^{\frac{-(x^2+y^2)}{2\sigma^2}}\nonumber\\
+L(x,y,\sigma)= G(x,y,\sigma) * I(x,y)\nonumber\\
+D(x,y,\sigma)= (G(x,y,k\sigma) - G(x,y,\sigma)) * I(x,y)\nonumber\\
+L(x,y,k\sigma) - L(x,y,\sigma) \approx (k-1) \sigma^2 \nabla^2G
+\label{eqscalespace}
+\end{eqnarray}
+
+Figure~\ref{scalespace} illustrates this approach in construction of difference of Gaussians ($D(x,y,\sigma)$). Here, the scale-space comprises several octaves in which we incrementally convolve the input image with the gaussian kernels separated by the constant $k=2^{1/s}$. In the next octave, top row in Figure~\ref{scalespace}, we double the value $\sigma$ and sample every second image pixels. While the computation in the second octave is far less than the previous octave.  We select the sample feature as extrema when it is the largest or the smallest value comparing it to the neighbors on the same plane, and the ones in upper and lower scales. Determining the sampling frequency helps to maximize the extrema stability; otherwise, the creation of close extrema makes the algorithm pretty unstable to small perturbation of the image. The work of Lowe et. al. demonstrates a sampling of 3 scales per octave shows the highest repeatability in detecting keypoint locations. In general, increasing the number of scales increases the number of keypoints per image and the number of matches as well. Although increasing the number of scales reduces the percentage of correct matching, the increase in the total number of correct matches is more appealing in object recognition tasks even if it demands much more computation.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{ScaleSpace.pdf}
+	\caption{For each one of the octaves, the Gaussian image is attained by convolving images with Gaussian function. Subtracting the adjacent windows in each scale produces difference of Gaussian images. Down-sampling to the factor of 2 in upper figures results less computation without influencing the accuracy. Finally, in non-maxima suppresion technique by comparing each centred pixel with other 26 elements in its propinquity, the maxima and the minima of the difference of Gaussian images ($D(x,y,\sigma)$) is obtained.}
+	\centering
+	\label{scalespace}
+\end{figure}
+
+\textbf{Stable feature extraction: } After comparing each pixel to its neighbors for discovering key-point candidates, we need an adjustment on the nearby data for location, scale, and orientation. The SIFT algorithm also curbs the strong responses along the edges since these points are prone to small noisy conditions. It uses the HCD algorithm for this step of edge detection.
+
+\textbf{Keypoint orientation and magnitude calculation: } By looking at the image properties and then assigning orientation to each key-point, it becomes invariant to rotation. The magnitude and direction of these keypoints can be calculated by comparing each sample of Gaussian smoothed image ($L(x,y)$) to its adjacent samples as shown in \ref{Erate2}. After calculating local orientations and their magnitude, these information can be summarized into an orientation histogram. In this way, all the local orientations and their gradient magnitude are gathered by defining a histogram with 36 bins that covers 360 degree range of orientations. The peak of the histogram shows the dominant direction in the local samples, and, in case two different directions have equal values, the final keypoint may have double directions.
+
+{\footnotesize\begin{eqnarray}
+m(x,y)=\sqrt{\left(L(x+1,y)-L(x-1,y)\right)^2+\left(L(x,y+1)-L(x,y-1)\right)}\nonumber\\
+\theta(x,y)=tan^{-1}{\left(L(x,y+1)-L(x,y-1)\right)/\left(L(x+1,y)-L(x-1,y)\right)}
+\label{Erate2}
+\end{eqnarray}}
+
+\textbf{Feature descriptor generation: } Figure~\ref{keypointdescriptor} depicts an abstract view about keypoint descriptor generation, which consists of 8 direction bins and  $2\times 2$ output window. The Gaussian weighting function is applied to $8\times 8$ window to avoid immediate responses to descriptors with a small change on the window and to put less emphasis on descriptors that are far from the center.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.45\textwidth]{keypointdescriptor.pdf}
+	\caption{SIFT keypoint descriptor representation process. (a) gradient orientation histogram sketched by accumulating the magnitude of 36 bins; (b) extracting the dominant orientation using histogram of beans; (c) rotating the window to the main orientation. (d) Summarizing the contents of $8\times 8$ set of samples into $2\times 2$ histogram window by applying a Gaussian weighting function}
+	\centering
+	\label{keypointdescriptor}
+\end{figure}
+
+\textbf{Detection procedure: } To detecting feature points by descriptors, we use the nearest neighbor algorithm. This algorithm evaluates the minimum Euclidean distance between descriptors and the feature vectors from the available database to make decisions.
+
+\subsubsection{SURF}
+Comparing to Harris-based corner detection, in SIFT, the Hessian-based corner detection, in SURF, provide a much more stable and repeatable solution and reduces computation time drastically. Similar to SIFT, in the SURF algorithm, the scale-space has different octaves, each of which comprises different scales based on the filters of different sizes. Contrary to the SIFT algorithm, box filters with different sizes and integral of images in the SURF algorithm obviate the need for applying the same filter on the previous layer to obtain a new layer. By applying a multi-sized filter on the original image concurrently, we can work on different scales just by up-scaling the filter boxes instead of down-scaling the original image. The dimension of these filters doubles when moving to the upper octave in the scale-space. In the end, we use the non-maximum suppression in a $3\times 3 \times 3$ neighborhood to localize interest points in the image~\cite{bay2008speeded}.
+
+
+Similar to the SIFT, the SURF algorithm comprises several stages as follows: 1) integral image representation calculation; 2) Determinant response mapping into a specific scale-space level calculation; 3) scale normalization of the determinant response map; 4) non-maximal suppression mapping to localize the interest points in the scale-space; 5) non-maximal suppression comparison with a predetermined threshold; 6) using a specific equation to localize interest points into the scale-space; 7) interests points orientation calculation~\cite{bouris2010fast}.
+
+
+\textbf{SURF interest point detection: } The integral of images in SURF algorithm facilitates the filtering stage. In \ref{surfinteg}, we calculate sum of pixels from origin to $(x, y)$ location in the image for having $A(x,y)$. Similarly, after calculating three other corners of the rectangle, $B_{\Sigma}(x,y)$, $C_{\Sigma}(x,y)$, and $D_{\Sigma}(x,y)$, three additions and four memory call ensue the integral of the rectangular window in Figure~\ref{Hessian}a. As shown in \ref{hesseq}, the SURF algorithm uses the determinant of Hessian matrices to locate the image's significant points. The hessian matrix in point $(x,y)$ comprises the convolution of Gaussian second-order derivatives. For instance, in \ref{hesseq}, $L_{xy}(x,\sigma)=\frac{\partial^2 g(\sigma)}{\partial x \partial y}$. As shown in Figure \ref{Hessian}b, the works of Bay et al. in \cite{bay2008speeded} imitate from Lowe's LoG approximation to propose approximated box filters for second-order Gaussian derivatives. These $9 \times 9$ box filters provide an approximations for Gaussian with $\sigma=1.2$, and they are denoted by $D_{xx}$, $D_{yy}$, and $`D_xy$. The determinant of the approximated filter integrates a weight value ($w$) to balance the hessian determinant.
+
+\begin{eqnarray}
+A(x,y)=\sum_{i=0}^{i \leq x} \sum_{j=0}^{j \leq y} I(i,j)
+\label{surfinteg}
+\end{eqnarray}
+\begin{eqnarray}
+H(x,\sigma)=\left[ \begin{array}{cc}
+L_{xx}(x,\sigma)& L_{xy}(x,\sigma) \\ L_{xy}(x,\sigma) & L_{yy}(x,\sigma) \end{array} \right]\nonumber\\
+det(H_{approx})=D_{xx}D_{yy}-(wD_{xy})^2\nonumber\\
+w=\frac{|L_{xy}(1.2)||D_{yy}(9)|}{|L_{yy}(1.2)||D_{xy}(9)|}=0.912\approx 0.9
+\label{hesseq}
+\end{eqnarray}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{Hessian.pdf}
+	\caption{Integral of images and Hessian matrix approximation in SURF algorithm.}
+	\centering
+	\label{Hessian}
+\end{figure}
+
+\textbf{SURF interest point matching and description: } interest point matching in the SURF algorithm consists of three separate steps. The first step is calculating Haar wavelet response in $x$ and $y$ directions within a circular region instead of gradient calculation in the SIFT algorithm, to create a reproducible orientation. By applying filters on integral images, we calculate the Haar wavelet response. In the second step, we construct the square regions and extract the SURF descriptors from them. This step is very similar to Figure~\ref{keypointdescriptor}b, but, for preserving crucial spatial information, the region is split up into smaller $4\times 4$ square sub-regions. This tiling helps to calculate gradients in groups of sub-patches contrary to the SIFT descriptors, which are contingent upon individual gradients. This fact makes the SURF algorithm more robust to noisy conditions and image perturbations. The Haar wavelet unit vector responses are also invariant to illumination bias and contrast. The third step is matching the features between two different images. For having a fast matching step, we compare the features with the same contrast. The sign of the Laplacian creates this contrast that is already computed in the detection phase and appears as a bright blob on a dark background or dark blob on bright background~\cite{bay2008speeded}.
+
+\subsection{FPGAs for Feature Extraction}
+
+\textbf{HCD:} The authors in \cite{lam2017lowering} reduce the dynamic power consumption of HCD corner detection by occluding the redundant signal activities in the corner calculation stage. High dynamic power consumption in HCD algorithm is due to its stream processing architecture. Designers of stream processing architectures should contend with high dynamic power dissipation due to row buffers that continuously stream pixels in each clock cycle and continuous operations of operators to maintain the desired throughput. By reducing redundant signal activity for calculations of the corners in HCD algorithm, the  paper \cite{lam2017lowering} significantly decreases dynamic power consumption for FPGA accelerator of HCD algorithm. This paper segregates the HCD algorithm into five distinct stages: 1) Gradient computation, 2) calculating the Gradient products, according to \ref{lof2}, 3) Gaussian Smoothing, 4) Corner Response, as shown in \ref{lof3}, 5) Non-Maximal Suppression (NMS).
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{StreamProcessing.pdf}
+	\caption{Stream Processing architecture \cite{lam2017lowering}.}
+	\centering
+	\label{FeaturesDNN}
+\end{figure}
+
+\textbf{SIFT: } Concentrating on feature detection step, Yao et. al. in \cite{yao2009architecture} propose one of the first prominent FPGA accelerators for the SIFT algorithm. Figure~\ref{scalespace} shows their architecture for the SIFT algorithm. This paper omits the up-sampling step to obviate the computational complexity of the interpolation operation. Therefore, the input image size in the first octave has $640 \times 480$ dimension, and, by down-sampling, the input image in the second octave has $320 \times 240$ pixels. Another simplification in this paper is the generation of all the scale images in each octave concurrently from the same input image instead of the underlying sequential procedure in the SIFT algorithm. This concurrent processing encourages parallel computing mechanisms with a slight effect on accuracy. For reducing the computational complexity when calculating the magnitude of keypoints, they replace the square root operation with absolute value in \ref{absval}. For optimization purposes, the authors divide the gradient magnitude by 1024. They also normalize the orientation values to the range of  0$^\circ$ to 35$^\circ$ degree instead of 0$^\circ$ to 360$^\circ$.
+
+{\footnotesize\begin{eqnarray}
+\tilde{m}(x,y)=\frac{\left| L(x+1,y)-L(x-1,y)\right|+\left|L(x,y+1)-L(x,y-1)\right|}{1024}
+\label{absval}
+\end{eqnarray}}
+
+The paper \cite{zhong2013real} introduces a complete implementation for the SIFT algorithm that integrates both feature detection and feature description steps. They implement the feature detection step by a low-cost embedded FPGA and use a DSP processor for the feature description step. The feature detection procedure in this paper takes 10ms while the extracting SIFT feature descriptors take 8$\mu$s, which satisfies the real-time computation requirements. Jiang et al. in \cite{jiang2014sift} work on the descriptor generation module in the SIFT algorithm to accelerate the key-point detection procedure. Reordering a histogram instead of rotation in this research causes the FPGA platform to do the orientation detection and descriptor generation in parallel. By calculating direction and orientation of all the feature points instead of the keypoints alone, this stage becomes completely independent of two previous stages in SIFT.
+
+In \cite{jiang2014sift}, similar to \cite{yao2009architecture}, the square root operation in feature points magnitude calculation is replaced with absolute value operation. In this paper, we divide the FPGA accelerator architecture for the feature description step of the SIFT algorithm into four separate blocks. The first block is the data window generator that works with $15 \times 15$ data window around the keypoints. This block generates the address of the data window by looking at the location of keypoints and then sends the gradient magnitude and direction to the next block. The second block firstly calculates the Gradient weighted magnitude (WM1), then it builds a 16-bin magnitude-orientation histogram (HG1), and according to these histograms, it detects the main orientation (MO1). The WM1 and HG1 sub-blocks can be processed parallel in stream processing manner since they are independent of the data in the previous or next clock. However, the MO1 block detects the main orientation according to the output of two previous sub-blocks, so it is not parallel. The third block works on histogram generation, and similar to the second block, it separates into three sub-stages: 1) Gaussian weighted magnitude calculation (WM2); 2) region dividing (RD2); 3) generating histogram in sub-regions. Since sub-blocks WM2 and RD2 have no data in common, they are parallel, but the histogram generation HG2 sub-block should proceed on the divided region in the previous clock. The fourth block reorders the histograms to rotate the key-point descriptor.
+
+Ding et al. in \cite{ding2014improve} address the low bandwidth of FPGA platforms when processing large images via the SIFT algorithm. They introduce two distinct approaches for hardware accelerator mechanisms to access the off-chip memory. In the first approach, a DMA module helps the hardware accelerator to access the off-chip memory directly. The second approach uses a microprocessor to handle a large number of function calls and improves 10 times better data access performance. The fully-pipeline FPGA implementation of the SIFT algorithm in \cite{vourvoulakis2016fully} can target real-time robotic vision independent of the number of features. The work in \cite{vourvoulakis2017fpga} proposes an FPGA accelerator using a random sample consensus (RANSAC) algorithm.
+
+\textbf{SURF: } The authors in \cite{shene2016real} develop a systolic array on FPGA to speed up interest point detection and description. Then they use their high-performance SURF implementation for real-time video stabilization.

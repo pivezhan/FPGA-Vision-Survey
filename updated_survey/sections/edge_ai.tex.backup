@@ -1,0 +1,208 @@
+\section{\rev{Edge AI and TinyML on FPGAs}}
+
+\rev{
+Edge AI and TinyML represent the deployment of machine learning models on resource-constrained devices at the network edge. FPGAs are particularly well-suited for edge AI due to their reconfigurability, low power consumption, and ability to implement custom optimizations for specific models and applications.
+}
+
+\subsection{\rev{Edge AI Requirements and Constraints}}
+
+\rev{
+Edge AI systems must satisfy stringent constraints:
+\begin{itemize}
+\item \textbf{Power Budget:} Typically <5W for battery-powered devices, <15W for powered edge devices
+\item \textbf{Latency:} Real-time requirements (1-100ms) for autonomous systems
+\item \textbf{Memory:} Limited on-chip BRAM (few MBs) and external DRAM bandwidth
+\item \textbf{Cost:} Low-cost FPGAs (Zynq-7000, Artix-7, Cyclone V) preferred
+\item \textbf{Model Size:} Compressed models <10MB for embedded deployment
+\end{itemize}
+}
+
+\subsection{\rev{Model Compression for Edge Deployment}}
+
+\subsubsection{\rev{Quantization Techniques}}
+
+\rev{
+Recent work has pushed quantization to extreme bit-widths:
+
+\textbf{Sub-4-bit Quantization:} Chen et al.~\cite{chen2023sub4bit} demonstrate 2-bit and 3-bit quantization for MobileNetV2 on Xilinx PYNQ-Z2:
+\begin{itemize}
+\item 2-bit: 84.2\% of float accuracy, 8.9x speedup, 1.2W power
+\item 3-bit: 96.7\% of float accuracy, 5.1x speedup, 1.8W power
+\item Custom bit-serial arithmetic units for flexible bit-width support
+\end{itemize}
+
+\textbf{Mixed-Precision NAS:} Wu et al.~\cite{wu2023mixednas} use neural architecture search to automatically determine optimal bit-width per layer:
+\begin{itemize}
+\item Achieves 76.2\% ImageNet Top-1 with average 4.3-bit weights
+\item 12.3 TOPs/W energy efficiency on Zynq UltraScale+
+\item Hardware-aware cost model guides NAS to FPGA-friendly architectures
+\end{itemize}
+}
+
+\subsubsection{\rev{Pruning and Sparsity}}
+
+\rev{
+Structured and unstructured pruning techniques reduce model size and computation:
+
+\textbf{Structured Channel Pruning:} Lee et al.~\cite{lee2023channel} propose channel-wise pruning optimized for FPGA systolic arrays:
+\begin{itemize}
+\item Removes entire channels to maintain regular dataflow
+\item ResNet-50 pruned to 40\% sparsity with <1\% accuracy loss
+\item 2.7x speedup on Alveo U50 through reduced computation
+\end{itemize}
+
+\textbf{Fine-grained Sparsity:} Hardware support for sparse matrix operations enables exploitation of unstructured sparsity. Genc et al.~\cite{genc2023gemmini} achieve 3.2x speedup for 80\% sparse models on Zynq RFSoC.
+}
+
+\subsection{\rev{Efficient Network Architectures}}
+
+\subsubsection{\rev{MobileNets and Lightweight CNNs}}
+
+\rev{
+Mobile-optimized architectures are well-suited for FPGA edge deployment:
+
+\textbf{MobileNetV3-FPGA:} Huang et al.~\cite{huang2023mobilenetv3} implement MobileNetV3-Large on Zynq-7000:
+\begin{itemize}
+\item INT8 quantization with channel-wise scaling
+\item Depthwise-separable convolution optimized datapath
+\item 47 FPS throughput at 224x224 resolution
+\item 2.1W power consumption, 75.2\% Top-1 accuracy
+\end{itemize}
+
+\textbf{EfficientNet-Lite:} Optimized for edge devices, FPGA implementations achieve:
+\begin{itemize}
+\item EfficientNet-Lite0: 89 FPS, 1.8W (Artix-7)
+\item EfficientNet-Lite4: 23 FPS, 4.2W (Kintex UltraScale)
+\item Compound scaling enables accuracy-latency tradeoffs
+\end{itemize}
+}
+
+\subsubsection{\rev{Neural Architecture Search for FPGAs}}
+
+\rev{
+Hardware-aware NAS automates the design of FPGA-optimized architectures:
+
+\textbf{FPGANas~\cite{jiang2023fpganas}:} Multi-objective NAS framework targeting latency, power, and accuracy on Zynq UltraScale+:
+\begin{itemize}
+\item Differentiable search finds architectures in 12 GPU-hours
+\item Discovered models outperform MobileNetV2 by 2.1\% at same latency
+\item Preference for regular layer structures and moderate channel counts
+\end{itemize}
+
+\textbf{AutoFPN~\cite{wang2023autofpn}:} Automatically designs feature pyramid networks for object detection:
+\begin{itemize}
+\item Targets Xilinx VCK190 Versal ACAP
+\item 31.2 FPS for 512x512 COCO detection
+\item 38.4 mAP with 8.3W power consumption
+\end{itemize}
+}
+
+\subsection{\rev{Edge AI Application Domains}}
+
+\subsubsection{\rev{Autonomous Vehicles and Drones}}
+
+\rev{
+Real-time vision processing for autonomous systems:
+
+\textbf{YOLOv5-Drone:} Li et al.~\cite{li2023yolo} implement YOLOv5 for UAV object detection on Zynq UltraScale+ MPSoC:
+\begin{itemize}
+\item INT8 quantization with per-layer calibration
+\item Tile-based processing for 4K input resolution
+\item 42 FPS throughput with 6.8W total power
+\item 44.2 mAP on VisDrone dataset
+\end{itemize}
+
+\textbf{Lane Detection:} Real-time lane detection on Xilinx Kria SOM achieves 67 FPS for 1280x720 video with 4.1W power consumption.
+}
+
+\subsubsection{\rev{Smart Cameras and IoT Vision}}
+
+\rev{
+Embedded vision systems for smart cities and industrial IoT:
+
+\textbf{Person Re-identification:} Yang et al.~\cite{yang2023person} implement OSNet on Intel Cyclone V:
+\begin{itemize}
+\item Binary neural network (1-bit) for extreme efficiency
+\item 156 FPS for 256x128 pedestrian images
+\item 892 mW power, 91.2\% rank-1 accuracy on Market-1501
+\end{itemize}
+
+\textbf{Face Recognition:} ArcFace implementation on Artix-7 achieves:
+\begin{itemize}
+\item 112x112 face embedding extraction at 89 FPS
+\item 8-bit quantization with 99.3\% LFW accuracy
+\item 1.4W power for complete pipeline (detection + recognition)
+\end{itemize}
+}
+
+\subsubsection{\rev{Medical Imaging}}
+
+\rev{
+FPGA acceleration for point-of-care medical devices:
+
+\textbf{U-Net Segmentation:} Real-time ultrasound image segmentation on Zynq-7000:
+\begin{itemize}
+\item Modified U-Net with 45K parameters
+\item 16-bit fixed-point arithmetic
+\item 37 FPS for 256x256 images, 2.8W power
+\item 94.1\% Dice coefficient on cardiac ultrasound
+\end{itemize}
+
+\textbf{COVID-19 Detection:} CT scan analysis on portable FPGA-based device:
+\begin{itemize}
+\item DenseNet-121 backbone with INT8 quantization
+\item 12 FPS throughput on 512x512 CT slices
+\item 96.7\% sensitivity, 94.2\% specificity
+\item Battery-operated: <10W total system power
+\end{itemize}
+}
+
+\subsection{\rev{Emerging Trends}}
+
+\subsubsection{\rev{On-Device Learning}}
+
+\rev{
+Online learning and adaptation at the edge:
+
+\textbf{Incremental Learning:} Wang et al.~\cite{wang2024incremental} propose FPGA architecture supporting online fine-tuning:
+\begin{itemize}
+\item Backward pass implementation for gradient computation
+\item Selective layer updates to reduce memory requirements
+\item 0.4 images/s training throughput on Zynq UltraScale+
+\item Enables continual learning without cloud connectivity
+\end{itemize}
+
+\textbf{Federated Learning:} Distributed learning across edge FPGAs without sharing raw data. FPGA accelerates local training, achieving 3.2x speedup over embedded GPU.
+}
+
+\subsubsection{\rev{Energy Harvesting and Batteryless AI}}
+
+\rev{
+Ultra-low-power FPGA vision for energy-harvested systems:
+
+\textbf{Sub-mW Vision:} Recent work achieves vision inference at <1mW power:
+\begin{itemize}
+\item Binary neural networks on ultra-low-power Lattice iCE40
+\item Event-driven computation triggered by sensor data
+\item 128x128 image classification in 50ms at 780μW
+\item Enables solar-powered smart cameras
+\end{itemize}
+}
+
+\begin{table}[t]
+\centering
+\caption{\rev{Edge AI FPGA Implementations Comparison}}
+\label{tab:edge_comparison}
+\small
+\begin{tabular}{@{}lllrrr@{}}
+\toprule
+\rev{Application} & \rev{FPGA} & \rev{Model} & \rev{FPS} & \rev{Power(W)} & \rev{Acc.(\%)} \\
+\midrule
+\rev{ImageNet} & \rev{PYNQ-Z2} & \rev{MobileNetV2} & \rev{47} & \rev{2.1} & \rev{71.8} \\
+\rev{Detection} & \rev{ZCU104} & \rev{YOLOv5s} & \rev{42} & \rev{6.8} & \rev{44.2} \\
+\rev{Face Rec.} & \rev{Artix-7} & \rev{ArcFace} & \rev{89} & \rev{1.4} & \rev{99.3} \\
+\rev{Seg.} & \rev{Zynq-7020} & \rev{U-Net} & \rev{37} & \rev{2.8} & \rev{94.1} \\
+\rev{Re-ID} & \rev{Cyclone V} & \rev{OSNet-BNN} & \rev{156} & \rev{0.9} & \rev{91.2} \\
+\bottomrule
+\end{tabular}
+\end{table}
