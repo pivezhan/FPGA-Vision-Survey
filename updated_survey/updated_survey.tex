@@ -1,12 +1,14 @@
 \documentclass[conference]{IEEEtran}
 
-% Revision tracking - NEW CONTENT IN RED, NEW METRICS IN BLUE
+% Revision tracking - NEW CONTENT IN RED, GRAMMATICAL REVISIONS IN BLUE
 \usepackage{xcolor}
 \newcommand{\rev}[1]{\textcolor{red}{#1}}           % New content (2019-2025)
+\newcommand{\revb}[1]{\textcolor{blue}{#1}}         % Grammatical revisions
 \newcommand{\newmetric}[1]{\textcolor{blue}{#1}}    % New comparison metrics
 
 % To disable colors for final submission, uncomment these:
 %\renewcommand{\rev}[1]{#1}
+%\renewcommand{\revb}[1]{#1}
 %\renewcommand{\newmetric}[1]{#1}
 
 % Standard packages
@@ -25,7 +27,7 @@
 \usepackage[font=small, labelfont=bf]{caption}
 \usepackage{fourier}
 \usepackage[english]{babel}
-\usepackage{sectsty}
+% \usepackage{sectsty}  % Commented out - incompatible with IEEEtran
 \usepackage{url, lipsum}
 \usepackage{hyperref}
 
@@ -47,7 +49,7 @@ morecomment=[l][\color{blue}]{\#},
 
 \begin{document}
 
-\title{Vision FPGA Accelerators: A Comprehensive Survey (2015-2025)}
+\title{Vision FPGA Accelerators: A Comprehensive Survey}
 
 % \author{\IEEEauthorblockN{Mohammad Pivezhandi}
 % \IEEEauthorblockA{Electrical and Computer Engineering\\

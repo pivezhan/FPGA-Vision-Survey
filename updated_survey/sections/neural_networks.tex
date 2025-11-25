@@ -1,24 +1,24 @@
 \section{Artificial Neural Networks}
 
-Absence of neural system can deter the living organisms in adapting themselves to new environments and evolution toward more complex species. These neural systems do provide selective transmission of signals to other parts of the body, and their synaptic plasticity can result their adaptation to the new environment~\cite{floreano2008bio}. By taking inspiration from neural system, many scientists today are taking advantage of artificial nets that their weights and cascade connection resembles such mechanism in synaptic transmission of data in biological organisms. Trends toward imitating from neural systems segregates into two distinct approaches: neuromorphic computing, which imitate from neural systems as they are, and behavioral implementations, that takes only an abstract view from neurons.
+\revb{The absence of a neural system prevents living organisms from adapting to new environments and evolving toward more complex species. Neural systems provide selective transmission of signals throughout the body, and their synaptic plasticity enables adaptation to new environments}~\cite{floreano2008bio}. \revb{Inspired by neural systems, scientists have developed artificial networks whose weights and cascaded connections resemble synaptic transmission mechanisms in biological organisms. Approaches to imitating neural systems fall into two categories: neuromorphic computing, which faithfully replicates neural systems, and behavioral implementations, which adopt an abstract view of neurons.}
 
-Deep learning is one of the machine learning techniques, and is comprised of feedforward neural networks (FNNs) and recurrent neural networks (RNNs). FNNs only depend on the non-linear results of the previous layers to make inference, but RNNs are capable of using their internal state that make them suitable in processing of sequence data such as speech recognition, DNA processing, and word analysis.
+\revb{Deep learning is a machine learning technique comprising feedforward neural networks (FNNs) and recurrent neural networks (RNNs). FNNs depend only on non-linear results from previous layers for inference, while RNNs utilize internal state, making them suitable for processing sequential data such as speech recognition, DNA analysis, and text processing.}
 
-Looking at the fact that how brain's vision works have already inspired researchers in deep learning. Studying visual cortex of cats shows hierarchical inference in their brain which means their mind firstly detect simple structures, such as edges, and then perceive more complex features of the objects ~\cite{hubel1962receptive}. In the same way in deep learning architectures, the first layers usually detect simple shapes, e.g. horizontal and vertical edges, and then the latter ones deal with more complex elements. The structure of these features is shown in Figure~\ref{FeaturesDNN}, that bolsters the fact of complexity augmentation in post layers.
+\revb{Understanding brain vision has inspired deep learning researchers. Studies of the cat visual cortex reveal hierarchical inference in which the brain first detects simple structures such as edges, then perceives more complex object features}~\cite{hubel1962receptive}. \revb{Similarly, in deep learning architectures, initial layers detect simple shapes (e.g., horizontal and vertical edges), while subsequent layers process more complex elements. The feature structure shown in Figure~\ref{FeaturesDNN} demonstrates this complexity augmentation across layers.}
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=.45\textwidth]{deepfeatures.pdf}
-	\caption{Features in different layers of deep neural networks.}
+	\caption{\revb{Hierarchical feature representations across layers of deep neural networks, showing progression from simple to complex features.}}
 	\centering
 	\label{FeaturesDNN}
 \end{figure}
 
 \subsection{Feedforward Neural Networks}
-The advent of FNNs and the basic concepts behind it was firstly proposed by Warren McCulloch and Walter Pitts~\cite{mcculloch1943logical}. Figure~\ref{Neuron} provides an analogy between biological neuron and artificial one.\cite{goodfellow2016deep}.
+\revb{The foundational concepts of FNNs were first proposed by Warren McCulloch and Walter Pitts}~\cite{mcculloch1943logical}. \revb{Figure~\ref{Neuron} illustrates the analogy between biological and artificial neurons}~\cite{goodfellow2016deep}.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=.45\textwidth]{Neuron.pdf}
-	\caption{Biological neuron and its equivalent artificial neuron.}
+	\caption{\revb{Comparison between biological neurons and their artificial counterparts, showing structural and functional correspondence.}}
 	\centering
 	\label{Neuron}
 \end{figure}
@@ -54,21 +54,23 @@ J(w,b) = -\frac{1}{m} \sum_{i=1}^m \left(y^{(i)} log a^{[2](i)}+ \left( 1-y^{(i)
 
 \subsubsection{Backpropagation Algorithm}
 Backpropagation is a common method for training FNNs. In Table \ref{T1} a general formula for both inference and backpropagation gradients of a network with $L$ hidden layers is presented.
-\begin{table}[t]\footnotesize
+\begin{table}[!htbp]\footnotesize
 	\centering
 	\begin{tabular}{cc}
+	\toprule
 	Inference & Backpropagation Gradients \\
 \midrule
-$Z^{[1]}=W^{[1]}X + b^{[1]}$ & $\frac{dJ(w,b)}{dZ^{[1]}} = \frac{dJ(w,b)}{dW^{[2]^T}}\frac{dJ(w,b)}{dZ^{[2]}}\acute{g}^{[2]}\left(Z^{[1]}\right)$ \\\\
-$A^{[1]}=g^{[1]}\left(Z^{[1]}\right)$ & $\frac{dJ(w,b)}{dW^{[1]}} = \frac{1}{m} \frac{dJ(w,b)}{dZ^{[1]}} A^{[1]^T}$ \\\\
-& $\frac{dJ(w,b)}{db^{[1]}} = \frac{1}{m}\sum \frac{dJ(w,b)}{dZ^{[1]}}$ \\\\
-... & ... \\\\
-$Z^{[L]}=W^{[L]}X + b^{[L]}$ & $\frac{dJ(w,b)}{dZ^{[L]}} = A^{[L]}-Y$  \\\\
-$A^{[L]}=g^{[L]}\left(Z^{[L]}\right)$ & $\frac{dJ(w,b)}{dW^{[L]}} = \frac{1}{m} \frac{dJ(w,b)}{dZ^{[L]}} A^{[L]^T}$ \\\\
-& $\frac{dJ(w,b)}{db^{[L]}} = \frac{1}{m}\sum \frac{dJ(w,b)}{dZ^{[L]}}$ \\\\
-& $\frac{dJ(w,b)}{dZ^{[L-1]}} = \frac{dJ(w,b)}{dW^{[L]^T}}\frac{dJ(w,b)}{dZ^{[L]}}\acute{g}^{[L]}\left(Z^{[L-1]}\right)$ \\\\
+$Z^{[1]}=W^{[1]}X + b^{[1]}$ & $\frac{dJ(w,b)}{dZ^{[1]}} = \frac{dJ(w,b)}{dW^{[2]^T}}\frac{dJ(w,b)}{dZ^{[2]}}\acute{g}^{[2]}\left(Z^{[1]}\right)$ \\[3pt]
+$A^{[1]}=g^{[1]}\left(Z^{[1]}\right)$ & $\frac{dJ(w,b)}{dW^{[1]}} = \frac{1}{m} \frac{dJ(w,b)}{dZ^{[1]}} A^{[1]^T}$ \\[3pt]
+& $\frac{dJ(w,b)}{db^{[1]}} = \frac{1}{m}\sum \frac{dJ(w,b)}{dZ^{[1]}}$ \\[3pt]
+... & ... \\[3pt]
+$Z^{[L]}=W^{[L]}X + b^{[L]}$ & $\frac{dJ(w,b)}{dZ^{[L]}} = A^{[L]}-Y$  \\[3pt]
+$A^{[L]}=g^{[L]}\left(Z^{[L]}\right)$ & $\frac{dJ(w,b)}{dW^{[L]}} = \frac{1}{m} \frac{dJ(w,b)}{dZ^{[L]}} A^{[L]^T}$ \\[3pt]
+& $\frac{dJ(w,b)}{db^{[L]}} = \frac{1}{m}\sum \frac{dJ(w,b)}{dZ^{[L]}}$ \\[3pt]
+& $\frac{dJ(w,b)}{dZ^{[L-1]}} = \frac{dJ(w,b)}{dW^{[L]^T}}\frac{dJ(w,b)}{dZ^{[L]}}\acute{g}^{[L]}\left(Z^{[L-1]}\right)$ \\
+\bottomrule
 	\end{tabular}
-	\caption{Back propagation and Inference in an FNN with $L$ layers. In these aligns words in upper-case demonstrate matrix operation~\cite{ng2017cs229}.}
+	\caption{\revb{Backpropagation and inference equations for an FNN with $L$ layers. Upper-case variables denote matrix operations}~\cite{ng2017cs229}.}
 	\label{T1}
 \end{table}
 After obtaining gradients in each of the $L$ layers, according to Table \ref{T1}, in a network with learning rate $\alpha$, the weight and bias values can be updated using gradient descent algorithm as \ref{E5}.
@@ -289,20 +291,21 @@ From 2010 to present, ImageNet dataset is considered as a touchstone for signifi
 	\centering
 	\label{ImageNetCompetition}
 \end{figure}
-\begin{table*}[ht]
+\begin{table}[!htbp]
 \centering
-\begin{tabular}{rlrrrr}
-  \hline
- & Size & Training.Examples & Validation.Examples & Testing.Examples & Classes \\
-  \hline
-MNIST & 28*28 & 60000 &  & 10000 &  10 \\
-  ImageNet & dyn & 1229413 & 50000 & 100000 & 1000 \\
-  CIFAR 10 & 32*32 & 50000 &  & 10000 &  10 \\
-   \hline
+\small
+\begin{tabular}{@{}lcrrrr@{}}
+\toprule
+Dataset & Size & Training & Validation & Testing & Classes \\
+\midrule
+MNIST & 28$\times$28 & 60,000 & -- & 10,000 & 10 \\
+ImageNet & dynamic & 1,229,413 & 50,000 & 100,000 & 1,000 \\
+CIFAR-10 & 32$\times$32 & 50,000 & -- & 10,000 & 10 \\
+\bottomrule
 \end{tabular}
-\caption{The overall characteristics of different deep-learning datasets.}
+\caption{\revb{Characteristics of common deep learning datasets, showing image dimensions, dataset splits, and number of classes.}}
 \label{datasets}
-\end{table*}
+\end{table}
 
 \subsection{FPGA accelerators for deep learning}
 Due to the fact that training deep learning applications is a computation-intensive and the available models consume enormous time for tuning and training procedure, it seems more appropriate to implement them in CPUs and GPUs instead. By the way, some researches have already focused on training CNNs by using FPGAs. The first trainable accelerator for FPGAs was proposed by zhao et. al. in~\cite{zhao2016f}. This paper proposes a trainable hybrid FPGA/CPU accelerator for CNN applications which outweighs common CPU and GPU implementation in speed and power respectively. Authors in \cite{zhiqiang2017FPGA} concentrate on loop unrolling and inherent parallelism in FPGAs to propose an accelerator that can outweigh the traditional software implementation by 5.7 to 10.7 factors. Due to the fact that stochastic gradient descent requires fewer training examples for each epoch, that reduces resource utilization, many of these FPGA implementations integrate this algorithm in their model. Kara et. al. in \cite{kara2017fpga} propose stochastic quantization, as a new compression technique, to attain a low-precision data for stochastic gradient descent algorithm that greatly enhances speed and reduces resource consumption. The final model achieves a great order of magnitude speedup for training procedure comparing to the full precision counterpart.
@@ -656,11 +659,10 @@ The authors in \cite{kim2017FPGA} propose a deep learning accelerator based on s
 \subsubsection{Hardware Generators}
 Looking at the complexity of hardware programming, many companies have already decided to propose high level synthesis (HLS) design tools, such as SystemC and OpenCL, to reduce time to market, increase portability, and facilitate FPGA implementations. All the advantages of these HLS design tools comes at the cost of performance due to deficiency in mapping high level software codes (e.g. C++) into optimal hardware architectures~\cite{zhao2017accelerating,samragh2017customizing}. According to Figure~\ref{CompThroughputHLS}, papers based on RTL implementations still show better throughput comparing to HLS, but OpenCL designs are somewhat superior to RTL counterpart.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=.45\textwidth]{ICompThroughputHLS.pdf}
-	\caption{Comparison of throughput and latency of HLS, OpenCL, and RTL implementation in ~\cite{guan2017fp,shen2017escher,ma2017optimizing,zhang2017improving,qiu2016going,liu2016automatic,lu2017evaluating,zhang2017frequency,suda2016throughput}.}
-	\centering
+	\includegraphics[width=0.95\textwidth]{ICompThroughputHLS.pdf}
+	\caption{\revb{Performance comparison of HLS, OpenCL, and RTL implementations (2015--2025). The left plot shows throughput in GOPs/s and the right plot shows latency in milliseconds across different CNN architectures.}}
 	\label{CompThroughputHLS}
 \end{figure}
 
@@ -675,11 +677,10 @@ OpenCL is a task-parallel and data-parallel heterogeneous computing system, and,
 
 Guan et. al. in~\cite{guan2017fp}, propose an OpenCL based hardware generator for a famous CNN framework named TensorFlow. In \cite{liu2016automatic}, Liu et. al. propose a Verilog code generator for LeNet and AlexNet models based on high level programming languages. HLS design is also considered as an applicable platform for other computer vision applications such as Viola Jones face detection accelerator in~\cite{srivastava2017accelerating}. Using OpenCL programming, authors in~\cite{gautier2014real} implement two prominent algorithms in 3D reconstruction. OpenVX is another c-based programming environment that is adopted for computer vision applications. Omidian et. al., in \cite{omidian2017exploring}, try to optimize the area and throughput by altering kernels in OpenVX HLS design system. By using OpenCL based design analysis techniques, authors in~\cite{yinger2017Customizable} optimize FPGA matrix accelerators. In this research, by dint of fast simulation environment in OpenCL, a nuance measurement of performance and precision with different sparsity levels on growing variety of matrix multiply operations becomes more practicable. Comparing resource consumption of OpenCL and HLS implementation with traditional RTL counterpart in Figure~\ref{CompResourcesHLS} shows great reliability of using such techniques in design and implementation of different DNN models.
 
-\begin{figure}[t]
+\begin{figure}[!htbp]
 	\centering
-	\includegraphics[width=.45\textwidth]{ICompResourcesHLS.pdf}
-	\caption{Resource consumption of HLS, OpenCL, and RTL based papers in in~\cite{suda2016throughput,guan2017fp,liu2016automatic,zhang2017frequency,shimoda2017binarized,ma2017optimizing,lu2017evaluating,qiu2016going,shimoda2017binarized,aydonat2017opencl} for different models.}
-	\centering
+	\includegraphics[width=0.95\textwidth]{ICompResourcesHLS.pdf}
+	\caption{\revb{Resource utilization comparison of HLS, OpenCL, and RTL implementations across different CNN architectures (2015--2025). The plots show LUT, DSP, BRAM, and flip-flop usage for various models including AlexNet, VGG, ResNet, MobileNet, and Vision Transformers.}}
 	\label{CompResourcesHLS}
 \end{figure}
 

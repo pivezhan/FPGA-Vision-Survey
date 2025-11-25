@@ -49,7 +49,7 @@ $(PDF): $(TEX) $(SECTIONS) $(BIB) $(FIGURES)
 	$(LATEX) $(LATEX_FLAGS) $(TEX)
 	@echo ""
 	@echo "Step 2/4: Running bibtex..."
-	$(BIBTEX) $(MAIN)
+	-$(BIBTEX) $(MAIN) || true
 	@echo ""
 	@echo "Step 3/4: Second pdflatex pass..."
 	$(LATEX) $(LATEX_FLAGS) $(TEX)

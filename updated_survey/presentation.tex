@@ -1,0 +1,469 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+% Graphics path
+\graphicspath{{figures/}}
+
+% Theme and colors
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Custom colors
+\definecolor{darkblue}{RGB}{0,51,102}
+\definecolor{lightblue}{RGB}{173,216,230}
+\setbeamercolor{title}{fg=darkblue}
+\setbeamercolor{frametitle}{fg=darkblue}
+\setbeamercolor{structure}{fg=darkblue}
+
+% Title information
+\title[FPGA Vision Accelerators]{Vision FPGA Accelerators:\\A Comprehensive Survey}
+\author{Mohammad Pivezhandi}
+\institute{Wayne State University\\Department of Electrical and Computer Engineering}
+\date{\today}
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+% Title Slide
+%-------------------------------------------------------------------------------
+\begin{frame}
+\titlepage
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Outline
+%-------------------------------------------------------------------------------
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 1: Introduction
+%-------------------------------------------------------------------------------
+\section{Introduction}
+
+\begin{frame}{Motivation}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Problem Statement:}
+\begin{itemize}
+    \item Deep neural networks demand massive computational resources
+    \item GPUs offer high throughput but consume significant power
+    \item ASICs are efficient but lack flexibility
+    \item Edge deployment requires low power and real-time processing
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{FPGA Advantages:}
+\begin{itemize}
+    \item Reconfigurable hardware
+    \item Lower power than GPUs
+    \item Customizable datapath
+    \item Parallel processing capability
+    \item Bridge between software and hardware
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Survey Scope}
+\textbf{This survey covers FPGA accelerators for:}
+\vspace{0.5cm}
+\begin{enumerate}
+    \item \textbf{Feature Extraction Methods}
+    \begin{itemize}
+        \item Harris Corner Detection, SIFT, SURF
+    \end{itemize}
+    \item \textbf{Convolutional Neural Networks}
+    \begin{itemize}
+        \item LeNet, AlexNet, VGG, ResNet, MobileNet
+    \end{itemize}
+    \item \textbf{Vision Transformers}
+    \begin{itemize}
+        \item ViT, DeiT, Swin Transformer
+    \end{itemize}
+    \item \textbf{Spiking Neural Networks}
+    \begin{itemize}
+        \item Neuromorphic computing, Event-based vision
+    \end{itemize}
+    \item \textbf{Edge AI and TinyML}
+    \begin{itemize}
+        \item Low-power deployment, On-device learning
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 2: Feature Extraction
+%-------------------------------------------------------------------------------
+\section{Feature Extraction Methods}
+
+\begin{frame}{Feature Extraction on FPGAs}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Harris Corner Detection:}
+\begin{itemize}
+    \item Detects corners using autocorrelation
+    \item Stream processing architecture
+    \item Low dynamic power optimization
+\end{itemize}
+
+\textbf{SIFT Algorithm:}
+\begin{itemize}
+    \item Scale-invariant feature transform
+    \item DoG pyramid construction
+    \item Keypoint orientation assignment
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{SURF Algorithm:}
+\begin{itemize}
+    \item Speeded-up robust features
+    \item Integral images for fast computation
+    \item Hessian-based interest points
+\end{itemize}
+
+\textbf{FPGA Benefits:}
+\begin{itemize}
+    \item Real-time processing
+    \item Parallel filter computation
+    \item Pipeline architecture
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 3: CNNs on FPGAs
+%-------------------------------------------------------------------------------
+\section{CNN Accelerators}
+
+\begin{frame}{CNN Architecture Overview}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{deepfeatures.pdf}
+\end{center}
+\textbf{Key Components:}
+\begin{itemize}
+    \item Convolutional layers: Feature extraction with learned filters
+    \item Pooling layers: Dimensionality reduction
+    \item Fully connected layers: Classification
+\end{itemize}
+\end{frame}
+
+\begin{frame}{FPGA Critical Parameters}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Data Type Organization:}
+\begin{itemize}
+    \item Fixed-point vs. floating-point
+    \item Custom precision (6-bit exponent, 5-bit mantissa)
+    \item Dynamic quantization per layer
+\end{itemize}
+
+\textbf{Storage Management:}
+\begin{itemize}
+    \item On-chip BRAM limitations
+    \item Off-chip DRAM bandwidth
+    \item Parameter encoding schemes
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Bandwidth Optimization:}
+\begin{itemize}
+    \item Batch processing
+    \item Weight reuse strategies
+    \item Roofline model analysis
+\end{itemize}
+
+\textbf{Loop Optimization:}
+\begin{itemize}
+    \item Loop unrolling
+    \item Loop tiling
+    \item Loop interchange
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Optimization Techniques}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Algorithmic Optimization:}
+\begin{itemize}
+    \item FFT-based convolution
+    \item Winograd transform
+    \item Layer fusion
+\end{itemize}
+
+\textbf{Quantization Methods:}
+\begin{itemize}
+    \item Dynamic fixed-point
+    \item Binary Neural Networks (BNN)
+    \item Incremental network quantization
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Model Compression:}
+\begin{itemize}
+    \item Structured pruning
+    \item Channel-wise pruning
+    \item Sparse neural networks
+\end{itemize}
+
+\textbf{Design Automation:}
+\begin{itemize}
+    \item High-Level Synthesis (HLS)
+    \item OpenCL frameworks
+    \item Hardware-aware NAS
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 4: Vision Transformers
+%-------------------------------------------------------------------------------
+\section{Vision Transformers}
+
+\begin{frame}{Vision Transformer Architecture}
+\textbf{Key Components:}
+\begin{itemize}
+    \item \textbf{Patch Embedding:} Divide image into 16$\times$16 patches
+    \item \textbf{Multi-Head Self-Attention (MHSA):} Compute attention between all patch pairs
+    \item \textbf{Feed-Forward Network (FFN):} Two-layer MLP with GELU activation
+    \item \textbf{Layer Normalization:} Applied before each sub-layer
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Computational Challenge:}
+\begin{itemize}
+    \item Attention complexity: $O(N^2 \cdot D)$ where $N$ = number of patches
+    \item For 224$\times$224 image with 16$\times$16 patches: $N = 196$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ViT FPGA Implementations}
+\begin{table}
+\centering
+\small
+\begin{tabular}{@{}lllrrr@{}}
+\toprule
+Work & FPGA & Model & TOPs/s & Power(W) & Eff. \\
+\midrule
+ViTA'21 & ZCU102 & ViT-B & 1.4 & 6.8 & 206 \\
+AutoViT'22 & Stratix 10 & DeiT-S & 3.15 & 21.5 & 147 \\
+FlightBERT'23 & Alveo U280 & ViT-B & 5.8 & 37.2 & 156 \\
+SwinAcc'23 & Versal VCK190 & Swin-T & 4.7 & 38.3 & 123 \\
+MobileViT'24 & ZCU104 & MobileViT-S & 0.89 & 3.2 & 278 \\
+\bottomrule
+\end{tabular}
+\caption{FPGA Vision Transformer implementations comparison (Efficiency in GOPs/W)}
+\end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 5: Spiking Neural Networks
+%-------------------------------------------------------------------------------
+\section{Spiking Neural Networks}
+
+\begin{frame}{Neuromorphic Computing}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Biological Inspiration:}
+\begin{itemize}
+    \item Mammalian cortex: 100 billion neurons
+    \item Each neuron: 1,000--10,000 synapses
+    \item Spike-based communication
+    \item Graceful degradation
+\end{itemize}
+
+\textbf{Large-Scale Systems:}
+\begin{itemize}
+    \item IBM TrueNorth
+    \item Intel Loihi
+    \item Stanford Neurogrid
+    \item Manchester SpiNNaker
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{SNN Advantages:}
+\begin{itemize}
+    \item Event-driven computation
+    \item Energy efficiency
+    \item Temporal processing
+    \item Self-supervised learning (STDP)
+\end{itemize}
+
+\textbf{FPGA Benefits:}
+\begin{itemize}
+    \item Higher throughput than CPUs/GPUs
+    \item Flexibility vs. ASICs
+    \item Rapid prototyping
+    \item Technology independence
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Event-Based Vision}
+\textbf{Dynamic Vision Sensors (DVS):}
+\begin{itemize}
+    \item Asynchronous pixel-level brightness change detection
+    \item High temporal resolution ($\mu$s level)
+    \item Low power consumption
+    \item Natural fit for SNNs
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{FPGA Applications:}
+\begin{itemize}
+    \item Real-time optical flow calculation
+    \item Object detection and tracking
+    \item Frequency extraction from rotating objects
+    \item Histogram creation for event processing
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 6: Edge AI
+%-------------------------------------------------------------------------------
+\section{Edge AI and TinyML}
+
+\begin{frame}{Edge AI Requirements}
+\textbf{Constraints for Edge Deployment:}
+\begin{itemize}
+    \item \textbf{Power Budget:} $<$5W for battery-powered, $<$15W for powered devices
+    \item \textbf{Latency:} Real-time requirements (1--100ms)
+    \item \textbf{Memory:} Limited on-chip BRAM (few MBs)
+    \item \textbf{Cost:} Low-cost FPGAs (Zynq-7000, Artix-7, Cyclone V)
+    \item \textbf{Model Size:} Compressed models $<$10MB
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Key Techniques:}
+\begin{itemize}
+    \item Sub-4-bit quantization
+    \item Hardware-aware Neural Architecture Search
+    \item On-device incremental learning
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Edge AI Applications}
+\begin{table}
+\centering
+\small
+\begin{tabular}{@{}lllrrr@{}}
+\toprule
+Application & FPGA & Model & FPS & Power(W) & Acc.(\%) \\
+\midrule
+ImageNet & PYNQ-Z2 & MobileNetV2 & 47 & 2.1 & 71.8 \\
+Detection & ZCU104 & YOLOv5s & 42 & 6.8 & 44.2 \\
+Face Rec. & Artix-7 & ArcFace & 89 & 1.4 & 99.3 \\
+Segmentation & Zynq-7020 & U-Net & 37 & 2.8 & 94.1 \\
+Re-ID & Cyclone V & OSNet-BNN & 156 & 0.9 & 91.2 \\
+\bottomrule
+\end{tabular}
+\caption{Edge AI FPGA implementations across different application domains}
+\end{table}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Section 7: Conclusion
+%-------------------------------------------------------------------------------
+\section{Conclusion}
+
+\begin{frame}{Key Findings}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{FPGA Advantages:}
+\begin{itemize}
+    \item High parallel processing capability
+    \item Customizable datapaths
+    \item Energy efficiency vs. GPUs
+    \item Reconfigurability vs. ASICs
+\end{itemize}
+
+\textbf{Optimization Strategies:}
+\begin{itemize}
+    \item Quantization (INT8 to binary)
+    \item Pruning and sparsity
+    \item Algorithmic transforms (Winograd, FFT)
+    \item Hardware-aware NAS
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Emerging Trends:}
+\begin{itemize}
+    \item Vision Transformers on FPGAs
+    \item Edge AI deployment
+    \item On-device learning
+    \item Event-based vision
+\end{itemize}
+
+\textbf{Future Directions:}
+\begin{itemize}
+    \item Neuromorphic computing
+    \item Self-supervised learning
+    \item Sub-mW vision systems
+    \item Hybrid CNN-Transformer architectures
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{center}
+\Large
+\textbf{FPGAs provide an optimal balance between:}
+
+\vspace{0.5cm}
+\begin{itemize}
+    \item[$\bullet$] Performance and Power Efficiency
+    \item[$\bullet$] Flexibility and Customization
+    \item[$\bullet$] Real-time Processing and Accuracy
+\end{itemize}
+
+\vspace{1cm}
+\textbf{Neuromorphic architectures represent the future of\\vision algorithms for real-time, energy-efficient processing.}
+\end{center}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% References
+%-------------------------------------------------------------------------------
+\begin{frame}{References}
+\small
+Key references available in the survey paper:\\
+\textit{Vision FPGA Accelerators: A Comprehensive Survey}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+% Thank You
+%-------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge Thank You!
+
+\vspace{1cm}
+\large Questions?
+
+\vspace{1cm}
+\normalsize
+Mohammad Pivezhandi\\
+Wayne State University\\
+mpvzhndi@wayne.edu
+\end{center}
+\end{frame}
+
+\end{document}

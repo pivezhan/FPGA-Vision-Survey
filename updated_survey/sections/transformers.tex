@@ -18,76 +18,69 @@
 
 \subsubsection{\rev{Efficient ViT Accelerators (2021-2023)}}
 
-\rev{
-Recent works have demonstrated efficient FPGA implementations of vision transformers:
+\rev{Recent works have demonstrated efficient FPGA implementations of vision transformers:}
 
-\textbf{ViTA~\cite{ham2021vita}:} The authors propose a specialized architecture for ViT acceleration on Xilinx ZCU102. They employ:
+\rev{\textbf{ViTA~\cite{ham2021vita}:} The authors propose a specialized architecture for ViT acceleration on Xilinx ZCU102. They employ:}
 \begin{itemize}
-\item Patch-based dataflow to reduce memory bandwidth
-\item Fused attention computation to minimize intermediate storage
-\item Mixed-precision quantization (8-bit activations, 4-bit weights)
-\item Achieves 1.4 TOPs/s throughput with 6.8W power consumption
+\item \rev{Patch-based dataflow to reduce memory bandwidth}
+\item \rev{Fused attention computation to minimize intermediate storage}
+\item \rev{Mixed-precision quantization (8-bit activations, 4-bit weights)}
+\item \rev{Achieves 1.4 TOPs/s throughput with 6.8W power consumption}
 \end{itemize}
 
-\textbf{Auto-ViT-Acc~\cite{you2022autoviT}:} An automated framework targeting Intel Stratix 10 GX achieves:
-\item 3.15 TOPs/s throughput for DeiT-Small
-\item 50\% DSP utilization through algorithmic optimization
-\item Latency-optimized mapping achieving 4.2ms inference time
-\end{itemize}
-
-\textbf{FlightBERT~\cite{park2023flightbert}:} Focuses on ultra-low latency transformer inference on AMD Alveo U280:
+\rev{\textbf{Auto-ViT-Acc~\cite{you2022autoviT}:} An automated framework targeting Intel Stratix 10 GX achieves:}
 \begin{itemize}
-\item Token-level pipelining for attention computation
-\item Sparse attention pattern exploitation
-\item Achieves 0.8ms latency for BERT-Base, 2.1ms for ViT-Base
-\item Power efficiency: 156 GOPs/W
+\item \rev{3.15 TOPs/s throughput for DeiT-Small}
+\item \rev{50\% DSP utilization through algorithmic optimization}
+\item \rev{Latency-optimized mapping achieving 4.2ms inference time}
 \end{itemize}
-}
+
+\rev{\textbf{FlightBERT~\cite{park2023flightbert}:} Focuses on ultra-low latency transformer inference on AMD Alveo U280:}
+\begin{itemize}
+\item \rev{Token-level pipelining for attention computation}
+\item \rev{Sparse attention pattern exploitation}
+\item \rev{Achieves 0.8ms latency for BERT-Base, 2.1ms for ViT-Base}
+\item \rev{Power efficiency: 156 GOPs/W}
+\end{itemize}
 
 \subsubsection{\rev{Attention Mechanism Optimization}}
 
-\rev{
-Several techniques have been proposed to optimize attention computation on FPGAs:
+\rev{Several techniques have been proposed to optimize attention computation on FPGAs:}
 
-\textbf{Approximate Attention:} Li et al.~\cite{li2022approx} propose approximate softmax and sparse attention patterns, reducing computation by 3.2x with <1\% accuracy loss.
+\rev{\textbf{Approximate Attention:} Li et al.~\cite{li2022approx} propose approximate softmax and sparse attention patterns, reducing computation by 3.2x with <1\% accuracy loss.}
 
-\textbf{Quantized Attention:} Wang et al.~\cite{wang2023qvit} demonstrate INT8 quantization for attention weights and activations, achieving 2.4x speedup on Xilinx VCU118.
+\rev{\textbf{Quantized Attention:} Wang et al.~\cite{wang2023qvit} demonstrate INT8 quantization for attention weights and activations, achieving 2.4x speedup on Xilinx VCU118.}
 
-\textbf{Efficient Attention on Modern FPGAs:} Liu et al.~\cite{liu2024attention} presented efficient attention mechanisms specifically optimized for Intel Agilex FPGAs, exploiting the advanced DSP architecture and high-bandwidth memory subsystem. Their implementation achieves significant throughput improvements for Vision Transformer inference through hardware-aware attention computation schemes.
+\rev{\textbf{Efficient Attention on Modern FPGAs:} Liu et al.~\cite{liu2024attention} presented efficient attention mechanisms specifically optimized for Intel Agilex FPGAs, exploiting the advanced DSP architecture and high-bandwidth memory subsystem. Their implementation achieves significant throughput improvements for Vision Transformer inference through hardware-aware attention computation schemes.}
 
-\textbf{Systolic Array Design:} Zhang et al.~\cite{zhang2023systolic} propose systolic attention processors that efficiently map Query-Key-Value computations to FPGA DSP blocks, achieving 85\% DSP utilization.
-}
+\rev{\textbf{Systolic Array Design:} Zhang et al.~\cite{zhang2023systolic} propose systolic attention processors that efficiently map Query-Key-Value computations to FPGA DSP blocks, achieving 85\% DSP utilization.}
 
 \subsection{\rev{Hybrid CNN-Transformer Architectures}}
 
-\rev{
-Hybrid architectures combining convolutional layers with transformer blocks offer better accuracy-efficiency tradeoffs:
+\rev{Hybrid architectures combining convolutional layers with transformer blocks offer better accuracy-efficiency tradeoffs:}
 
-\textbf{Swin Transformer:} Hierarchical design with shifted windows reduces attention complexity from $O(N^2)$ to $O(N)$. FPGA implementations on Versal ACAP achieve:
+\rev{\textbf{Swin Transformer:} Hierarchical design with shifted windows reduces attention complexity from $O(N^2)$ to $O(N)$. FPGA implementations on Versal ACAP achieve:}
 \begin{itemize}
-\item 4.7 TOPs/s throughput for Swin-Tiny
-\item 12.3 GOPs/W power efficiency
-\item 83.2\% ImageNet Top-1 accuracy
+\item \rev{4.7 TOPs/s throughput for Swin-Tiny}
+\item \rev{12.3 GOPs/W power efficiency}
+\item \rev{83.2\% ImageNet Top-1 accuracy}
 \end{itemize}
 
-\textbf{MobileViT:} Lightweight architecture suitable for edge deployment. Implementations on Zynq UltraScale+ achieve 89 FPS for 256x256 input with 3.2W power.
-}
+\rev{\textbf{MobileViT:} Lightweight architecture suitable for edge deployment. Implementations on Zynq UltraScale+ achieve 89 FPS for 256x256 input with 3.2W power.}
 
 \subsection{\rev{Performance Comparison}}
 
-\rev{
-Table~\ref{tab:vit_comparison} summarizes recent FPGA implementations of vision transformers. Modern platforms like Intel Agilex and AMD Versal enable higher throughput through:
+\rev{Table~\ref{tab:vit_comparison} summarizes recent FPGA implementations of vision transformers. Modern platforms like Intel Agilex and AMD Versal enable higher throughput through:}
 \begin{itemize}
-\item Larger on-chip memory (up to 180 Mb BRAM)
-\item Higher DSP count (>10,000 DSPs)
-\item AI-optimized tiles (Versal AI Engines, Agilex Tensor blocks)
-\item DDR5 support for higher memory bandwidth (>1 TB/s)
+\item \rev{Larger on-chip memory (up to 180 Mb BRAM)}
+\item \rev{Higher DSP count (>10,000 DSPs)}
+\item \rev{AI-optimized tiles (Versal AI Engines, Agilex Tensor blocks)}
+\item \rev{DDR5 support for higher memory bandwidth (>1 TB/s)}
 \end{itemize}
-}
 
-\begin{table}[t]
+\begin{table}[!htbp]
 \centering
-\caption{\rev{FPGA Vision Transformer Implementations Comparison}}
+\caption{\rev{Comparison of FPGA vision transformer implementations showing throughput, power consumption, and efficiency (GOPs/W).}}
 \label{tab:vit_comparison}
 \small
 \begin{tabular}{@{}lllrrr@{}}
@@ -105,17 +98,15 @@ Table~\ref{tab:vit_comparison} summarizes recent FPGA implementations of vision 
 
 \subsection{\rev{Challenges and Future Directions}}
 
-\rev{
-Key challenges for transformer acceleration on FPGAs include:
+\rev{Key challenges for transformer acceleration on FPGAs include:}
 
-\textbf{Memory Bandwidth:} Attention mechanisms require loading entire key-value matrices, creating bandwidth bottlenecks. Solutions include:
+\rev{\textbf{Memory Bandwidth:} Attention mechanisms require loading entire key-value matrices, creating bandwidth bottlenecks. Solutions include:}
 \begin{itemize}
-\item Tiling strategies to fit attention in on-chip memory
-\item Sparse attention patterns to reduce data movement
-\item HBM integration on high-end FPGAs
+\item \rev{Tiling strategies to fit attention in on-chip memory}
+\item \rev{Sparse attention patterns to reduce data movement}
+\item \rev{HBM integration on high-end FPGAs}
 \end{itemize}
 
-\textbf{Dynamic Workloads:} Varying sequence lengths complicate hardware design. Adaptive architectures and dynamic batch sizing help improve utilization.
+\rev{\textbf{Dynamic Workloads:} Varying sequence lengths complicate hardware design. Adaptive architectures and dynamic batch sizing help improve utilization.}
 
-\textbf{Emerging Architectures:} New efficient transformer variants like FocalNet, MaxViT, and FastViT offer better hardware-algorithm co-design opportunities.
-}
+\rev{\textbf{Emerging Architectures:} New efficient transformer variants like FocalNet, MaxViT, and FastViT offer better hardware-algorithm co-design opportunities.}
