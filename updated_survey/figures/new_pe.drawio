@@ -1,0 +1,295 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="PE" id="processing-element">
+    <mxGraphModel dx="900" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="550" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Part (a) - Independent BRAM-PE ==================== -->
+
+        <mxCell id="label-a" value="(a)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="200" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Row 1 BRAMs -->
+        <mxCell id="a-bram1" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a-bram2" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="125" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a-bram3" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a-bram4" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from BRAMs to PEs row 1 -->
+        <mxCell id="a-arr1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="87" y="70" as="sourcePoint" />
+            <mxPoint x="87" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="152" y="70" as="sourcePoint" />
+            <mxPoint x="120" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="227" y="70" as="sourcePoint" />
+            <mxPoint x="260" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr4" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292" y="70" as="sourcePoint" />
+            <mxPoint x="292" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Row 1 PEs -->
+        <mxCell id="a-pe1" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="65" y="110" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="a-pe2" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="235" y="110" width="80" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from PEs row 1 -->
+        <mxCell id="a-arr5" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="87" y="155" as="sourcePoint" />
+            <mxPoint x="87" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr6" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="155" as="sourcePoint" />
+            <mxPoint x="120" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr7" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="155" as="sourcePoint" />
+            <mxPoint x="260" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr8" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292" y="155" as="sourcePoint" />
+            <mxPoint x="292" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Row 2 BRAMs -->
+        <mxCell id="a-bram5" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="230" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a-bram6" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="125" y="230" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a-bram7" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="230" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a-bram8" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="265" y="230" width="55" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from BRAMs to PEs row 2 -->
+        <mxCell id="a-arr9" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="87" y="260" as="sourcePoint" />
+            <mxPoint x="87" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr10" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="152" y="260" as="sourcePoint" />
+            <mxPoint x="120" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr11" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="227" y="260" as="sourcePoint" />
+            <mxPoint x="260" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr12" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292" y="260" as="sourcePoint" />
+            <mxPoint x="292" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Row 2 PEs -->
+        <mxCell id="a-pe3" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="65" y="300" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="a-pe4" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="235" y="300" width="80" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from PEs row 2 -->
+        <mxCell id="a-arr13" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="87" y="345" as="sourcePoint" />
+            <mxPoint x="87" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr14" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="345" as="sourcePoint" />
+            <mxPoint x="120" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr15" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="345" as="sourcePoint" />
+            <mxPoint x="260" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a-arr16" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="292" y="345" as="sourcePoint" />
+            <mxPoint x="292" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== Part (b) - Shared BRAM ==================== -->
+
+        <mxCell id="label-b" value="(b)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Row 1 BRAMs -->
+        <mxCell id="b-bram1" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="b-bram2" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="b-bram3" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="40" width="55" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Complex connections from row 1 BRAMs to PEs -->
+        <mxCell id="b-arr1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="467" y="70" as="sourcePoint" />
+            <mxPoint x="467" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr2" value="" style="endArrow=classic;html=1;strokeWidth=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="567" y="70" as="sourcePoint" />
+            <mxPoint x="495" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="567" y="70" as="sourcePoint" />
+            <mxPoint x="615" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr4" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="707" y="70" as="sourcePoint" />
+            <mxPoint x="645" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Row 1 PEs -->
+        <mxCell id="b-pe1" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="440" y="110" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="b-pe2" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="590" y="110" width="80" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from PEs row 1 to row 2 -->
+        <mxCell id="b-arr5" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="467" y="155" as="sourcePoint" />
+            <mxPoint x="467" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr6" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="155" as="sourcePoint" />
+            <mxPoint x="530" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr7" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="615" y="155" as="sourcePoint" />
+            <mxPoint x="560" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr8" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="645" y="155" as="sourcePoint" />
+            <mxPoint x="645" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Row 2 BRAM (single shared) -->
+        <mxCell id="b-bram4" value="BRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="230" width="55" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Connections from row 2 BRAM to PEs -->
+        <mxCell id="b-arr9" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="467" y="260" as="sourcePoint" />
+            <mxPoint x="467" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-line1" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="260" as="sourcePoint" />
+            <mxPoint x="560" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr10" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="495" y="260" as="sourcePoint" />
+            <mxPoint x="495" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr11" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="260" as="sourcePoint" />
+            <mxPoint x="615" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Row 2 PEs -->
+        <mxCell id="b-pe3" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="440" y="300" width="80" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="b-pe4" value="PE" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#D0D0D0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;size=15;" vertex="1" parent="1">
+          <mxGeometry x="590" y="300" width="80" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from PEs row 2 -->
+        <mxCell id="b-arr12" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="345" as="sourcePoint" />
+            <mxPoint x="480" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b-arr13" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="345" as="sourcePoint" />
+            <mxPoint x="630" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

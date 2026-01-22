@@ -1,0 +1,132 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="CNNModels2" id="cnn-models2-comparison">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Background gradient -->
+        <mxCell id="background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8E8E8;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1200" height="700" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== GOOGLENET Row ==================== -->
+        <mxCell id="googlenet-label" value="GOOGLENET" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- GoogLeNet Operations bar (blue) - ~99.5% of total -->
+        <mxCell id="googlenet-ops" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5B9BD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="60" width="880" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="googlenet-ops-val" value="1502000000" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="500" y="60" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- GoogLeNet Parameters bar (orange) - ~0.5% -->
+        <mxCell id="googlenet-params" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ED7D31;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="60" width="20" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="googlenet-params-val" value="6797700" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#ED7D31;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="60" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== VGG16 Row ==================== -->
+        <mxCell id="vgg16-label" value="VGG16" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="200" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- VGG16 Operations bar (blue) - ~99% of total -->
+        <mxCell id="vgg16-ops" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5B9BD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="870" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vgg16-ops-val" value="4124868456" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="480" y="200" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- VGG16 Parameters bar (orange) - ~1% -->
+        <mxCell id="vgg16-params" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ED7D31;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="200" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vgg16-params-val" value="24787944" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#ED7D31;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="200" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ALEXNET Row ==================== -->
+        <mxCell id="alexnet-label" value="ALEXNET" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="340" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- AlexNet Operations bar (blue) - ~95% of total -->
+        <mxCell id="alexnet-ops" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5B9BD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="760" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="alexnet-ops-val" value="1135156096" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="420" y="340" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- AlexNet Parameters bar (orange) - ~5% -->
+        <mxCell id="alexnet-params" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ED7D31;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="960" y="340" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="alexnet-params-val" value="58659752" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="970" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== LENET Row ==================== -->
+        <mxCell id="lenet-label" value="LENET" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="480" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- LeNet Operations bar (blue) - ~88% of total -->
+        <mxCell id="lenet-ops" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5B9BD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lenet-ops-val" value="416520" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="300" y="480" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- LeNet Parameters bar (orange) - ~12% -->
+        <mxCell id="lenet-params" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ED7D31;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="600" y="480" width="500" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lenet-params-val" value="58706" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=18;fontStyle=1;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="750" y="480" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== X-Axis Labels ==================== -->
+        <mxCell id="x-80" value="80%" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="175" y="570" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x-85" value="85%" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="400" y="570" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x-90" value="90%" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="625" y="570" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x-95" value="95%" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="850" y="570" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="x-100" value="100%" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="570" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Legend ==================== -->
+        <mxCell id="legend-ops-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5B9BD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="620" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-ops-text" value="Operations" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="485" y="617" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-params-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ED7D31;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="620" y="620" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-params-text" value="Parameters" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="655" y="617" width="100" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

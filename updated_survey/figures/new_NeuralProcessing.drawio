@@ -1,0 +1,258 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="NeuralProcessing" id="neural-processing">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="700" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Part (a): Neural Processing Diagram ==================== -->
+        <!-- Main container box -->
+        <mxCell id="main-box" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="620" height="320" as="geometry" />
+        </mxCell>
+
+        <!-- Column headers -->
+        <mxCell id="header-sensor" value="Sensor&lt;br&gt;inputs" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="50" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="header-log" value="Logarithmic&lt;br&gt;response" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="180" y="50" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="header-weight" value="Weighting&lt;br&gt;functions" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="340" y="50" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Row 1: p1 -->
+        <mxCell id="p1-label" value="&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-p1-log" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="115" as="sourcePoint" />
+            <mxPoint x="150" y="115" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-p1" value="log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="155" y="100" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-log1-w1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="115" as="sourcePoint" />
+            <mxPoint x="305" y="115" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w1-log-p1" value="&lt;i&gt;w&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt; × log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="310" y="100" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Row 2: p2 -->
+        <mxCell id="p2-label" value="&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="145" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-p2-log" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="160" as="sourcePoint" />
+            <mxPoint x="150" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-p2" value="log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="155" y="145" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-log2-w2" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="160" as="sourcePoint" />
+            <mxPoint x="305" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w2-log-p2" value="&lt;i&gt;w&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt; × log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="310" y="145" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Row 3: p3 -->
+        <mxCell id="p3-label" value="&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;3&lt;/sub&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="190" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-p3-log" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="205" as="sourcePoint" />
+            <mxPoint x="150" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-p3" value="log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;3&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="155" y="190" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-log3-w3" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="205" as="sourcePoint" />
+            <mxPoint x="305" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w3-log-p3" value="&lt;i&gt;w&lt;/i&gt;&lt;sub&gt;3&lt;/sub&gt; × log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;3&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="310" y="190" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Row 4: p4 -->
+        <mxCell id="p4-label" value="&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;4&lt;/sub&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="235" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-p4-log" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="250" as="sourcePoint" />
+            <mxPoint x="150" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-p4" value="log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;4&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="155" y="235" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-log4-w4" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="250" as="sourcePoint" />
+            <mxPoint x="305" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w4-log-p4" value="&lt;i&gt;w&lt;/i&gt;&lt;sub&gt;4&lt;/sub&gt; × log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;4&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="310" y="235" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Row 5: p5 -->
+        <mxCell id="p5-label" value="&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;5&lt;/sub&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="280" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-p5-log" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="295" as="sourcePoint" />
+            <mxPoint x="150" y="295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="log-p5" value="log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;5&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="155" y="280" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-log5-w5" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="295" as="sourcePoint" />
+            <mxPoint x="305" y="295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="w5-log-p5" value="&lt;i&gt;w&lt;/i&gt;&lt;sub&gt;5&lt;/sub&gt; × log(&lt;i&gt;p&lt;/i&gt;&lt;sub&gt;5&lt;/sub&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6688CC;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="310" y="280" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Summation block -->
+        <mxCell id="sum-block" value="&lt;font color=&quot;#ffffff&quot; style=&quot;font-size: 32px;&quot;&gt;Σ&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#8B0000;strokeColor=#000000;fontFamily=Times New Roman;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="60" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows to summation -->
+        <mxCell id="arrow-w1-sum" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="435" y="115" as="sourcePoint" />
+            <mxPoint x="495" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-w2-sum" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="435" y="160" as="sourcePoint" />
+            <mxPoint x="495" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-w3-sum" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="435" y="205" as="sourcePoint" />
+            <mxPoint x="495" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-w4-sum" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="435" y="250" as="sourcePoint" />
+            <mxPoint x="495" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow-w5-sum" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="435" y="295" as="sourcePoint" />
+            <mxPoint x="495" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Output arrow -->
+        <mxCell id="arrow-output" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="565" y="200" as="sourcePoint" />
+            <mxPoint x="630" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="output-label" value="Output" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="590" y="185" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- (a) label -->
+        <mxCell id="label-a" value="&lt;b&gt;(a)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="330" y="370" width="40" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Part (b): Word/Pacmen illustration ==================== -->
+        <!-- Main container for part b -->
+        <mxCell id="partb-container" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="40" y="420" width="620" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Left box - HOT word -->
+        <mxCell id="hot-box" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="60" y="440" width="280" height="140" as="geometry" />
+        </mxCell>
+        <!-- H letter -->
+        <mxCell id="letter-h" value="" style="shape=line;html=1;strokeWidth=3;strokeColor=#000000;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="90" y="480" width="60" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="letter-h2" value="" style="shape=line;html=1;strokeWidth=3;strokeColor=#000000;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="120" y="480" width="60" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="letter-h3" value="" style="shape=line;html=1;strokeWidth=3;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="105" y="505" width="30" height="1" as="geometry" />
+        </mxCell>
+        <!-- O letter (circle) -->
+        <mxCell id="letter-o" value="" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=3;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="160" y="465" width="50" height="60" as="geometry" />
+        </mxCell>
+        <!-- T letter -->
+        <mxCell id="letter-t1" value="" style="shape=line;html=1;strokeWidth=3;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="230" y="470" width="50" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="letter-t2" value="" style="shape=line;html=1;strokeWidth=3;strokeColor=#000000;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="240" y="485" width="50" height="1" as="geometry" />
+        </mxCell>
+        <!-- (A) Word? label -->
+        <mxCell id="word-label" value="(A) Word?" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="150" y="585" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Right box - Pacmen -->
+        <mxCell id="pacmen-box" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1.5;strokeColor=#000000;fillColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="440" width="280" height="140" as="geometry" />
+        </mxCell>
+        <!-- Pacman 1 (top) - mouth facing down -->
+        <mxCell id="pacman1" value="" style="shape=pie;whiteSpace=wrap;html=1;startAngle=0.1;endAngle=0.9;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="460" y="450" width="50" height="50" as="geometry" />
+        </mxCell>
+        <!-- Pacman 2 (bottom left) - mouth facing right -->
+        <mxCell id="pacman2" value="" style="shape=pie;whiteSpace=wrap;html=1;startAngle=0.35;endAngle=0.15;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="400" y="510" width="50" height="50" as="geometry" />
+        </mxCell>
+        <!-- Pacman 3 (bottom right) - mouth facing left -->
+        <mxCell id="pacman3" value="" style="shape=pie;whiteSpace=wrap;html=1;startAngle=0.6;endAngle=0.4;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="520" y="510" width="50" height="50" as="geometry" />
+        </mxCell>
+        <!-- (B) Pacmen? label -->
+        <mxCell id="pacmen-label" value="(B) Pacmen?" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="450" y="585" width="90" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- (b) label -->
+        <mxCell id="label-b" value="&lt;b&gt;(b)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="330" y="630" width="40" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

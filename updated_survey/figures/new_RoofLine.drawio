@@ -1,0 +1,164 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="RoofLine" id="roofline-model">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="600" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Axes ==================== -->
+
+        <!-- Y-axis -->
+        <mxCell id="y-axis" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="480" as="sourcePoint" />
+            <mxPoint x="120" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Y-axis label -->
+        <mxCell id="y-label" value="&lt;i&gt;Attainable performance&lt;/i&gt;&lt;br&gt;(&lt;i&gt;GFlops&lt;/i&gt;/&lt;i&gt;sec&lt;/i&gt;)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- X-axis -->
+        <mxCell id="x-axis" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="480" as="sourcePoint" />
+            <mxPoint x="900" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- X-axis label -->
+        <mxCell id="x-label" value="&lt;i&gt;Operational intensity&lt;/i&gt; (Flops/Byte)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="620" y="520" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Computation to Communication ratio label -->
+        <mxCell id="ratio-label" value="&lt;i&gt;Computation&lt;/i&gt; to &lt;i&gt;Communication ratio&lt;/i&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="450" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Processor 1 Roofline ==================== -->
+
+        <!-- Peak memory bandwidth (diagonal) -->
+        <mxCell id="mem-bw" value="" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="480" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Peak memory bandwidth label -->
+        <mxCell id="mem-bw-label" value="&lt;i&gt;Peak memory bandwidth&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;rotation=-45;" vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="150" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Processor 1 ceiling (horizontal) -->
+        <mxCell id="proc1-ceiling" value="" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="150" as="sourcePoint" />
+            <mxPoint x="880" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Peak Floating Point performance label -->
+        <mxCell id="peak-fp-label" value="&lt;i&gt;Peak FloatingPoint performance&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="95" width="230" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Processor 1 label -->
+        <mxCell id="proc1-label" value="&lt;i&gt;Processor 1&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="780" y="125" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Processor 2 Roofline ==================== -->
+
+        <!-- Processor 2 ceiling (horizontal) -->
+        <mxCell id="proc2-ceiling" value="" style="endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="310" as="sourcePoint" />
+            <mxPoint x="880" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Processor 2 label -->
+        <mxCell id="proc2-label" value="&lt;i&gt;Processor 2&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="780" y="285" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Points ==================== -->
+
+        <!-- Point A (on P1 ceiling) -->
+        <mxCell id="point-A" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="430" y="130" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label-A" value="&lt;i&gt;A&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="435" y="135" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Point A' (on diagonal) -->
+        <mxCell id="point-Ap" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="275" y="295" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label-Ap" value="&lt;i&gt;A'&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="300" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Point B (on P1 ceiling) -->
+        <mxCell id="point-B" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="585" y="130" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label-B" value="&lt;i&gt;B&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="590" y="135" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Point C (on P1 ceiling) -->
+        <mxCell id="point-C" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="720" y="130" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="label-C" value="&lt;i&gt;C&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="725" y="135" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Operational Intensity Lines ==================== -->
+
+        <!-- Operational intensity 1 (memory bound) - dashed vertical -->
+        <mxCell id="oi1-line" value="" style="endArrow=none;html=1;strokeWidth=1;dashed=1;dashPattern=8 8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="290" y="480" as="sourcePoint" />
+            <mxPoint x="290" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Operational intensity 1 label -->
+        <mxCell id="oi1-label" value="&lt;i&gt;Operational intensity&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;br&gt;(memory bound)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="225" y="375" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Algorithm 1 label -->
+        <mxCell id="alg1-label" value="&lt;i&gt;Algorithm 1&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="230" y="490" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Operational intensity 2 (compute bound) - dashed vertical -->
+        <mxCell id="oi2-line" value="" style="endArrow=none;html=1;strokeWidth=1;dashed=1;dashPattern=8 8;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="500" y="480" as="sourcePoint" />
+            <mxPoint x="500" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Operational intensity 2 label -->
+        <mxCell id="oi2-label" value="&lt;i&gt;Operational intensity&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;br&gt;(compute bound)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="440" y="375" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Algorithm 2 label -->
+        <mxCell id="alg2-label" value="&lt;i&gt;Algorithm 2&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="445" y="490" width="80" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,327 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="BNN" id="bnn-comparison">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="600" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== CNN Row (Top) ==================== -->
+
+        <!-- CNN label -->
+        <mxCell id="cnn-label" value="&lt;i&gt;CNN&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=18;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="40" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Input real fmaps stack -->
+        <mxCell id="cnn-input-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-input-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-input-1" value="real&lt;br&gt;fmaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#A0A0A0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="80" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Input dimensions -->
+        <mxCell id="cnn-n-left" value="&lt;i&gt;n&lt;/i&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="15" y="125" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-cprime" value="&lt;i&gt;c'&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="30" y="185" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-n-bottom" value="&lt;i&gt;n&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="70" y="185" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution label -->
+        <mxCell id="cnn-conv-label" value="&lt;i&gt;convolution&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="130" y="55" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution operator * -->
+        <mxCell id="cnn-conv-op" value="∗" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="145" y="115" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Filter stack -->
+        <mxCell id="cnn-filter-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="95" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-filter-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#A0A0A0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="100" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-filter-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#B0B0B0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="185" y="105" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-filter-label" value="F(:,:,1)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="175" y="80" width="50" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Filter dimensions -->
+        <mxCell id="cnn-f-top" value="&lt;i&gt;f&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="225" y="105" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-c-filter" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="175" y="145" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-f-bottom" value="&lt;i&gt;f&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="150" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to output fmaps -->
+        <mxCell id="cnn-arrow1" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="130" as="sourcePoint" />
+            <mxPoint x="280" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Output real fmaps stack (after convolution) -->
+        <mxCell id="cnn-out1-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="75" width="75" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-out1-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="85" width="75" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-out1-1" value="real&lt;br&gt;fmaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#A0A0A0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="95" width="75" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-c-out1" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="185" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Bias box -->
+        <mxCell id="cnn-bias-box" value="b" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D0D0D0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="430" y="35" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-c-bias" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="425" y="60" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Bias arrow -->
+        <mxCell id="cnn-bias-arrow" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="442" y="65" as="sourcePoint" />
+            <mxPoint x="442" y="95" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Arrow to ReLU -->
+        <mxCell id="cnn-arrow2" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="130" as="sourcePoint" />
+            <mxPoint x="475" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ReLU box -->
+        <mxCell id="cnn-relu" value="ReLU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="480" y="100" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-c-relu" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="495" y="165" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Pool -->
+        <mxCell id="cnn-arrow3" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="535" y="130" as="sourcePoint" />
+            <mxPoint x="590" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Pool box -->
+        <mxCell id="cnn-pool" value="Pool" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="595" y="100" width="50" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to final output -->
+        <mxCell id="cnn-arrow4" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="130" as="sourcePoint" />
+            <mxPoint x="700" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Final output real fmaps -->
+        <mxCell id="cnn-final-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="750" y="85" width="55" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-final-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#A0A0A0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="95" width="55" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-final-1" value="real&lt;br&gt;fmaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#B0B0B0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="730" y="105" width="55" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Final dimensions -->
+        <mxCell id="cnn-E-right" value="&lt;i&gt;E&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="810" y="125" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-c-final" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="720" y="175" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="cnn-E-bottom" value="&lt;i&gt;E&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="775" y="175" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== BNN Row (Bottom) ==================== -->
+
+        <!-- BNN label -->
+        <mxCell id="bnn-label" value="&lt;i&gt;BNN&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=18;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="230" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Input binary fmaps stack -->
+        <mxCell id="bnn-input-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#606060;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="260" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-input-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="270" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-input-1" value="binary&lt;br&gt;fmaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="80" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Input dimensions -->
+        <mxCell id="bnn-n-left" value="&lt;i&gt;n&lt;/i&gt;" style="text;html=1;align=right;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="15" y="315" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-cprime" value="&lt;i&gt;c'&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="30" y="375" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-n-bottom" value="&lt;i&gt;n&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="70" y="375" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution label -->
+        <mxCell id="bnn-conv-label" value="&lt;i&gt;convolution&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="130" y="245" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution operator * -->
+        <mxCell id="bnn-conv-op" value="∗" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="145" y="305" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Filter stack (binary) -->
+        <mxCell id="bnn-filter-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="285" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-filter-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="290" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-filter-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="185" y="295" width="35" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-filter-label" value="F(:,:,1)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="175" y="270" width="50" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Filter dimensions -->
+        <mxCell id="bnn-f-top" value="&lt;i&gt;f&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="225" y="295" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-c-filter" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="175" y="335" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-f-bottom" value="&lt;i&gt;f&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="340" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to output fmaps -->
+        <mxCell id="bnn-arrow1" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="320" as="sourcePoint" />
+            <mxPoint x="280" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Output integer fmaps stack -->
+        <mxCell id="bnn-out1-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="265" width="75" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-out1-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="275" width="75" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-out1-1" value="integer&lt;br&gt;fmaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="285" width="75" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-c-out1" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="375" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Pool -->
+        <mxCell id="bnn-arrow2" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="320" as="sourcePoint" />
+            <mxPoint x="455" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Pool box -->
+        <mxCell id="bnn-pool" value="Pool" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="460" y="290" width="50" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Batch norm -->
+        <mxCell id="bnn-arrow3" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="320" as="sourcePoint" />
+            <mxPoint x="560" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Batch norm box -->
+        <mxCell id="bnn-batchnorm" value="Batch&lt;br&gt;norm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="565" y="290" width="50" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to Binarize -->
+        <mxCell id="bnn-arrow4" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="620" y="320" as="sourcePoint" />
+            <mxPoint x="670" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Binarize box -->
+        <mxCell id="bnn-binarize" value="Binarize" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="675" y="290" width="55" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to final output -->
+        <mxCell id="bnn-arrow5" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#D0D0D0;strokeColor=#808080;width=15;endSize=5;startSize=5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="320" as="sourcePoint" />
+            <mxPoint x="785" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Final output binary fmaps -->
+        <mxCell id="bnn-final-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="835" y="275" width="55" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-final-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="825" y="285" width="55" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-final-1" value="binary&lt;br&gt;fmaps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="815" y="295" width="55" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Final dimensions -->
+        <mxCell id="bnn-E-right" value="&lt;i&gt;E&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="895" y="315" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-c-final" value="&lt;i&gt;c&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="805" y="365" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="bnn-E-bottom" value="&lt;i&gt;E&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="860" y="365" width="15" height="15" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,304 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="VGG16" id="vgg16-architecture">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="800" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Input Image (RGB Stack) ==================== -->
+
+        <!-- Red layer -->
+        <mxCell id="img-r" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF0000;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="180" width="80" height="80" as="geometry" />
+        </mxCell>
+        <!-- Green layer -->
+        <mxCell id="img-g" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#00FF00;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="80" height="80" as="geometry" />
+        </mxCell>
+        <!-- Blue layer -->
+        <mxCell id="img-b" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0066FF;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="160" width="80" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Input dimension label -->
+        <mxCell id="input-dim" value="224 × 224 × 3" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="265" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Legend ==================== -->
+        <mxCell id="legend1" value="&lt;i&gt;Convolution&lt;/i&gt; = 3 × 3, &lt;i&gt;S&lt;/i&gt; = 1, &lt;i&gt;same&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="170" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2" value="&lt;i&gt;MAX-POOL&lt;/i&gt; = 2 × 2, &lt;i&gt;S&lt;/i&gt; = 2" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="190" width="150" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Column 1 ==================== -->
+
+        <!-- Convolution label -->
+        <mxCell id="conv1-label" value="Convolution" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="295" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow -->
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="75" y="315" as="sourcePoint" />
+            <mxPoint x="75" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Parameters -->
+        <mxCell id="params1" value="#&lt;i&gt;P&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 1,792&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 867,041,128" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="315" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 224x224x64 -->
+        <mxCell id="layer1" value="224 × 224 × 64" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="345" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Max-Pool -->
+        <mxCell id="pool1-label" value="Max-Pool" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="385" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="75" y="405" as="sourcePoint" />
+            <mxPoint x="75" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params2" value="#&lt;i&gt;P&lt;sub&gt;p&lt;/sub&gt;&lt;/i&gt; = 0" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="395" width="70" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 112x112x64 -->
+        <mxCell id="layer2" value="112 × 112 × 64" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="435" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution -->
+        <mxCell id="conv2-label" value="Convolution" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="475" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="75" y="495" as="sourcePoint" />
+            <mxPoint x="75" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params3" value="#&lt;i&gt;P&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 73,728&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 924,844,032" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="490" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 112x112x128 -->
+        <mxCell id="layer3" value="112 × 112 × 128" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="525" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Max-Pool -->
+        <mxCell id="pool2-label" value="Max-Pool" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="565" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow4" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="75" y="585" as="sourcePoint" />
+            <mxPoint x="75" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params4" value="#&lt;i&gt;P&lt;sub&gt;p&lt;/sub&gt;&lt;/i&gt; = 0" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="125" y="575" width="70" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 56x56x128 -->
+        <mxCell id="layer4" value="56 × 56 × 128" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="20" y="615" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Column 2 ==================== -->
+
+        <!-- Convolution label -->
+        <mxCell id="conv3-label" value="Convolution" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="30" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="50" as="sourcePoint" />
+            <mxPoint x="370" y="75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params5" value="#&lt;i&gt;P&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 295,168&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 924,844,032" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="45" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 56x56x256 -->
+        <mxCell id="layer5" value="56 × 56 × 256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="315" y="80" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Max-Pool -->
+        <mxCell id="pool3-label" value="Max-Pool" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="120" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow6" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="140" as="sourcePoint" />
+            <mxPoint x="370" y="165" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params6" value="#&lt;i&gt;P&lt;sub&gt;p&lt;/sub&gt;&lt;/i&gt; = 0" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="135" width="70" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 28x28x256 -->
+        <mxCell id="layer6" value="28 × 28 × 256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="315" y="170" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution -->
+        <mxCell id="conv4-label" value="Convolution" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="210" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="230" as="sourcePoint" />
+            <mxPoint x="370" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params7" value="#&lt;i&gt;P&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 1,179,648&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 924,844,032" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="225" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 28x28x512 -->
+        <mxCell id="layer7" value="28 × 28 × 512" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="315" y="260" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Max-Pool -->
+        <mxCell id="pool4-label" value="Max-Pool" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="300" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="320" as="sourcePoint" />
+            <mxPoint x="370" y="345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params8" value="#&lt;i&gt;P&lt;sub&gt;p&lt;/sub&gt;&lt;/i&gt; = 0" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="315" width="70" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 14x14x512 -->
+        <mxCell id="layer8" value="14 × 14 × 512" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="315" y="350" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Convolution -->
+        <mxCell id="conv5-label" value="Convolution" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="390" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow9" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="410" as="sourcePoint" />
+            <mxPoint x="370" y="435" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params9" value="#&lt;i&gt;P&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 2,359,296&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;C&lt;/sub&gt;&lt;/i&gt; = 462,422,016" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="405" width="120" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 14x14x512 -->
+        <mxCell id="layer9" value="14 × 14 × 512" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="315" y="440" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Max-Pool -->
+        <mxCell id="pool5-label" value="Max-Pool" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="330" y="480" width="80" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow10" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="500" as="sourcePoint" />
+            <mxPoint x="370" y="525" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params10" value="#&lt;i&gt;P&lt;sub&gt;p&lt;/sub&gt;&lt;/i&gt; = 0" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="495" width="70" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- 7x7x512 -->
+        <mxCell id="layer10" value="7 × 7 × 512" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="315" y="530" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Column 3 (Fully Connected) ==================== -->
+
+        <!-- 4096 -->
+        <mxCell id="fc1" value="4096" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8E8E8;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="170" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Fully Connected -->
+        <mxCell id="fc1-label" value="Fully Connected" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="210" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow11" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="665" y="230" as="sourcePoint" />
+            <mxPoint x="665" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params11" value="#&lt;i&gt;P&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt; = 16,781,312&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt; = 16,777,216" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="110" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 4096 -->
+        <mxCell id="fc2" value="4096" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8E8E8;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="260" width="110" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Fully Connected -->
+        <mxCell id="fc2-label" value="Fully Connected" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="300" width="100" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow12" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="665" y="320" as="sourcePoint" />
+            <mxPoint x="665" y="345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="params12" value="#&lt;i&gt;P&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt; = 4,097,000&lt;br&gt;#&lt;i&gt;C&lt;sub&gt;F&lt;/sub&gt;&lt;/i&gt; = 4,096,000" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="290" width="110" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 1000 -->
+        <mxCell id="fc3" value="1000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8E8E8;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="350" width="110" height="35" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

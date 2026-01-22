@@ -1,0 +1,321 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="ScaleSpace" id="scale-space-sift">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="700" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Scale Space First Octave (Bottom) ==================== -->
+        <!-- Vertical arrow for first octave -->
+        <mxCell id="arrow-first-octave" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="580" as="sourcePoint" />
+            <mxPoint x="60" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label-first-octave" value="&lt;b&gt;Scale Space&lt;br&gt;First Octave&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="10" y="440" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- First Octave - G(x,y,k0σ) - bottom -->
+        <mxCell id="g-k0-1" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;0&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="540" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k0-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="190" y="530" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- First Octave - G(x,y,k1σ) -->
+        <mxCell id="g-k1-1" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="480" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k1-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="190" y="470" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- First Octave - G(x,y,k2σ) -->
+        <mxCell id="g-k2-1" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k2-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="190" y="410" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- First Octave - G(x,y,k3σ) -->
+        <mxCell id="g-k3-1" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k3-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="190" y="350" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Gaussian label -->
+        <mxCell id="gaussian-label" value="&lt;b&gt;Gaussian&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="200" y="600" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Minus circles for first octave -->
+        <mxCell id="minus-1-1" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="545" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="minus-1-2" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="485" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="minus-1-3" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="425" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="minus-1-4" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="365" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from grids to minus circles (first octave) -->
+        <mxCell id="arr-g0-m1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="555" as="sourcePoint" />
+            <mxPoint x="355" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-g1-m1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="495" as="sourcePoint" />
+            <mxPoint x="355" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-g1-m2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="495" as="sourcePoint" />
+            <mxPoint x="355" y="495" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-g2-m2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="435" as="sourcePoint" />
+            <mxPoint x="355" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-g2-m3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="435" as="sourcePoint" />
+            <mxPoint x="355" y="435" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-g3-m3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="375" as="sourcePoint" />
+            <mxPoint x="355" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-g3-m4" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="315" y="375" as="sourcePoint" />
+            <mxPoint x="355" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DOG grids for first octave -->
+        <mxCell id="dog-1-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="440" y="530" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dog-1-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="440" y="470" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="dog-1-3" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=20;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="440" y="410" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from minus to DOG (first octave) -->
+        <mxCell id="arr-m1-d1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="395" y="555" as="sourcePoint" />
+            <mxPoint x="435" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-m2-d2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="395" y="495" as="sourcePoint" />
+            <mxPoint x="435" y="495" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-m3-d3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="395" y="435" as="sourcePoint" />
+            <mxPoint x="435" y="435" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== Scale Space Second Octave (Top) ==================== -->
+        <!-- Vertical arrow for second octave -->
+        <mxCell id="arrow-second-octave" value="" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="310" as="sourcePoint" />
+            <mxPoint x="60" y="70" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label-second-octave" value="&lt;b&gt;Scale Space&lt;br&gt;Second Octave&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="5" y="170" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Second Octave grids (smaller) -->
+        <mxCell id="g-k0-2" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;0&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k0-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="270" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="g-k1-2" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;1&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="230" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k1-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="220" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="g-k2-2" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;2&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k2-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="170" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="g-k3-2" value="&lt;i&gt;G(x,y,k&lt;/i&gt;&lt;sub&gt;3&lt;/sub&gt;&lt;i&gt;σ)&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="130" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grid-k3-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="120" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Minus circles for second octave -->
+        <mxCell id="minus-2-1" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="275" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="minus-2-2" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="225" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="minus-2-3" value="−" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=#FFFFFF;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="175" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows for second octave -->
+        <mxCell id="arr2-g0-m1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="290" as="sourcePoint" />
+            <mxPoint x="345" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-g1-m1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="240" as="sourcePoint" />
+            <mxPoint x="345" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-g1-m2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="240" as="sourcePoint" />
+            <mxPoint x="345" y="235" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-g2-m2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="190" as="sourcePoint" />
+            <mxPoint x="345" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-g2-m3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="190" as="sourcePoint" />
+            <mxPoint x="345" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-g3-m3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="140" as="sourcePoint" />
+            <mxPoint x="345" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DOG grids for second octave -->
+        <mxCell id="dog-2-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="420" y="265" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dog-2-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="420" y="215" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dog-2-3" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=15;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="420" y="165" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from minus to DOG (second octave) -->
+        <mxCell id="arr2-m1-d1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="285" as="sourcePoint" />
+            <mxPoint x="415" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-m2-d2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="235" as="sourcePoint" />
+            <mxPoint x="415" y="235" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr2-m3-d3" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="185" as="sourcePoint" />
+            <mxPoint x="415" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Detecting maxima/minima box -->
+        <mxCell id="maxima-box" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=1;fillColor=#E0E0E0;strokeColor=#808080;" vertex="1" parent="1">
+          <mxGeometry x="560" y="80" width="180" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- DOG grids inside maxima box (with dark center cells) -->
+        <mxCell id="maxima-dog-1" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=12;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="590" y="100" width="80" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="maxima-dog-2" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=12;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="590" y="145" width="80" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="maxima-dog-3" value="" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=12;strokeWidth=1;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="590" y="190" width="80" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- Dark spots on middle grid -->
+        <mxCell id="dark-spot-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#505050;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="620" y="155" width="20" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows to maxima box -->
+        <mxCell id="arr-dog21-max" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="285" as="sourcePoint" />
+            <mxPoint x="555" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-dog22-max" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="235" as="sourcePoint" />
+            <mxPoint x="555" y="235" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arr-dog23-max" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="515" y="185" as="sourcePoint" />
+            <mxPoint x="555" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Maxima label -->
+        <mxCell id="maxima-label" value="&lt;b&gt;Detecting maxima and minima of&lt;br&gt;the difference-of-Gaussian images&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="560" y="240" width="180" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- DOG label -->
+        <mxCell id="dog-label" value="&lt;b&gt;Difference of Gaussian (DOG)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="430" y="600" width="200" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

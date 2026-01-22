@@ -1,0 +1,433 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="BNNArch" id="bnn-architecture">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Part (a) - Overall Network ==================== -->
+
+        <!-- (a) label -->
+        <mxCell id="a-label" value="(a)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="100" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Input images stack -->
+        <mxCell id="img-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="img-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8E8E8;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="45" y="55" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="img-1" value="images" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="50" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to layer 1 -->
+        <mxCell id="arrow-img-l1" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="105" y="90" as="sourcePoint" />
+            <mxPoint x="145" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Layer 1 computational unit (large gray box) -->
+        <mxCell id="layer1-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="40" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="layer1-label" value="layer 1&lt;br&gt;computational unit" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="165" y="45" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer1-params" value="parameters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="175" y="95" width="70" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to layer 2 -->
+        <mxCell id="arrow-l1-l2" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="90" as="sourcePoint" />
+            <mxPoint x="350" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Layer 2 computational unit -->
+        <mxCell id="layer2-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="355" y="40" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="layer2-label" value="layer 2&lt;br&gt;computational&lt;br&gt;unit" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="365" y="42" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="layer2-params" value="parameters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="380" y="95" width="70" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to layer 3 -->
+        <mxCell id="arrow-l2-l3" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="90" as="sourcePoint" />
+            <mxPoint x="535" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Layer 3 computational unit -->
+        <mxCell id="layer3-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="40" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="layer3-label" value="layer 3&lt;br&gt;computational&lt;br&gt;unit" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="550" y="42" width="100" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="layer3-params" value="parameters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="565" y="95" width="70" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to classes -->
+        <mxCell id="arrow-l3-cls" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="665" y="90" as="sourcePoint" />
+            <mxPoint x="705" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Classes output stack -->
+        <mxCell id="cls-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="50" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8E8E8;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="715" y="55" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-1" value="classes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="710" y="60" width="50" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Memory box -->
+        <mxCell id="memory-box" value="memory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="355" y="170" width="70" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Connections from memory to layers -->
+        <mxCell id="mem-l1" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="145" as="sourcePoint" />
+            <mxPoint x="220" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mem-l1-h" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="185" as="sourcePoint" />
+            <mxPoint x="350" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mem-l2" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="415" y="145" as="sourcePoint" />
+            <mxPoint x="415" y="165" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mem-l3" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="145" as="sourcePoint" />
+            <mxPoint x="600" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mem-l3-h" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="430" y="185" as="sourcePoint" />
+            <mxPoint x="600" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mem-cls" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="730" y="125" as="sourcePoint" />
+            <mxPoint x="730" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mem-cls-h" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="185" as="sourcePoint" />
+            <mxPoint x="730" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== Part (b) - Computational Unit ==================== -->
+
+        <!-- (b) label -->
+        <mxCell id="b-label" value="(b)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="350" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SIMD lanes label -->
+        <mxCell id="simd-label" value="SIMD lanes (S)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="225" y="240" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SIMD brace -->
+        <mxCell id="simd-brace-left" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="260" as="sourcePoint" />
+            <mxPoint x="240" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="simd-brace-h" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="260" as="sourcePoint" />
+            <mxPoint x="300" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="simd-brace-right" value="" style="endArrow=none;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="260" as="sourcePoint" />
+            <mxPoint x="300" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- SIMD boxes at top -->
+        <mxCell id="simd-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="235" y="275" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="simd-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="255" y="275" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="simd-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="275" y="275" width="20" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="simd-4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="295" y="275" width="20" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Input image stream -->
+        <mxCell id="input-stream" value="input image&lt;br&gt;stream" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="60" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to input buffer -->
+        <mxCell id="arrow-in-buf" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="105" y="330" as="sourcePoint" />
+            <mxPoint x="140" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Input vector buffer -->
+        <mxCell id="input-buffer" value="input&lt;br&gt;vector&lt;br&gt;buffer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="145" y="295" width="55" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- PE array box -->
+        <mxCell id="pe-array-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D0D0D0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="290" width="110" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- PE #1 -->
+        <mxCell id="pe1" value="PE #1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="235" y="300" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- PE #2 -->
+        <mxCell id="pe2" value="PE #2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="235" y="335" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Dots -->
+        <mxCell id="pe-dots" value="..." style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="260" y="360" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- PE #p -->
+        <mxCell id="pep" value="PE #p" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="235" y="385" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Output vector buffer -->
+        <mxCell id="output-buffer" value="output&lt;br&gt;vector&lt;br&gt;buffer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="350" y="295" width="55" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to output stream -->
+        <mxCell id="arrow-buf-out" value="" style="endArrow=classic;html=1;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="330" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Output image stream -->
+        <mxCell id="output-stream" value="output image&lt;br&gt;stream" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="455" y="310" width="70" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== Part (c) - PE Details ==================== -->
+
+        <!-- (c) label -->
+        <mxCell id="c-label" value="(c)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="275" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Curly brace from PE to (c) -->
+        <mxCell id="brace-pe-c" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;flipH=0;size=0.5;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="450" y="385" width="150" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Weight memory -->
+        <mxCell id="weight-mem" value="weight&lt;br&gt;memory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="310" width="60" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- S label from weight -->
+        <mxCell id="s-weight" value="S" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="645" y="355" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from weight to XNOR -->
+        <mxCell id="arrow-w-xnor" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="355" as="sourcePoint" />
+            <mxPoint x="650" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- S input from left -->
+        <mxCell id="s-left" value="S" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="595" y="385" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-s-xnor" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="395" as="sourcePoint" />
+            <mxPoint x="625" y="395" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- XNOR box -->
+        <mxCell id="xnor-box" value="XNOR" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="625" y="380" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- S output from XNOR -->
+        <mxCell id="s-xnor-out" value="S" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="645" y="415" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from XNOR to popcount -->
+        <mxCell id="arrow-xnor-pop" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="415" as="sourcePoint" />
+            <mxPoint x="650" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Popcount box -->
+        <mxCell id="popcount-box" value="popcount" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="450" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- T output from popcount -->
+        <mxCell id="t-pop" value="T" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="685" y="455" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from popcount to first adder -->
+        <mxCell id="arrow-pop-add1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="685" y="465" as="sourcePoint" />
+            <mxPoint x="720" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- First adder circle -->
+        <mxCell id="adder1" value="+" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="725" y="455" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Accumulator -->
+        <mxCell id="accumulator" value="accumulator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="310" width="70" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- T label from accumulator -->
+        <mxCell id="t-accum" value="T" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="345" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from accumulator down -->
+        <mxCell id="arrow-accum-down" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="795" y="345" as="sourcePoint" />
+            <mxPoint x="795" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Arrow from adder1 to adder2 -->
+        <mxCell id="arrow-add1-add2" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="465" as="sourcePoint" />
+            <mxPoint x="780" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- T label -->
+        <mxCell id="t-add1" value="T" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="755" y="475" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Second adder circle -->
+        <mxCell id="adder2" value="+" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="785" y="455" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Threshold memory -->
+        <mxCell id="thresh-mem" value="Threshold&lt;br&gt;memory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="870" y="310" width="70" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- T label from threshold -->
+        <mxCell id="t-thresh" value="T" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="355" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from threshold down -->
+        <mxCell id="arrow-thresh-down" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="905" y="355" as="sourcePoint" />
+            <mxPoint x="905" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- T label -->
+        <mxCell id="t-thresh2" value="T" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="475" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow from adder2 to comparator -->
+        <mxCell id="arrow-add2-cmp" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="810" y="465" as="sourcePoint" />
+            <mxPoint x="870" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Comparator >= -->
+        <mxCell id="comparator" value="&gt;=" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1;fontFamily=Times New Roman;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="885" y="455" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- 1 label (output) -->
+        <mxCell id="one-label" value="1" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="480" width="15" height="15" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow to output vector -->
+        <mxCell id="arrow-cmp-out" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="915" y="467" as="sourcePoint" />
+            <mxPoint x="965" y="467" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Output vector label -->
+        <mxCell id="output-vec-label" value="output&lt;br&gt;vector" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Times New Roman;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="970" y="455" width="45" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,337 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.0.0">
+  <diagram name="Maping" id="cnn-mapping">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== Part (a) - Multi-channel convolution ==================== -->
+
+        <mxCell id="label-a" value="&lt;i&gt;(a)&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="100" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Input volume I - stack of feature maps -->
+        <mxCell id="a-input-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="50" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="a-input-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="60" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="a-input-1" value="I" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="70" width="120" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Input dimensions labels -->
+        <mxCell id="a-niy" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;iy&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-niy-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="70" as="sourcePoint" />
+            <mxPoint x="70" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a-nif" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;if&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="80" y="220" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nif-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="210" as="sourcePoint" />
+            <mxPoint x="100" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a-nix" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;ix&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="130" y="220" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nix-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="215" as="sourcePoint" />
+            <mxPoint x="200" y="215" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Convolution symbol -->
+        <mxCell id="a-conv" value="∗" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="230" y="130" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Filter volume F(:,:,1) - stack of filters -->
+        <mxCell id="a-filter-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#B0B0B0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="60" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a-filter-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#C0C0C0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="90" width="60" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a-filter-1" value="F(:,:,1)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D0D0D0;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="100" width="60" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Nof label pointing up-right -->
+        <mxCell id="a-nof-filter" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;of&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nof-arrow1" value="" style="endArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="100" as="sourcePoint" />
+            <mxPoint x="340" y="70" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Filter dimension labels -->
+        <mxCell id="a-nfy" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;fy&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="115" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nfy-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="355" y="100" as="sourcePoint" />
+            <mxPoint x="355" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a-nfx" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;fx&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="180" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nfx-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="175" as="sourcePoint" />
+            <mxPoint x="340" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Bias b -->
+        <mxCell id="a-bias" value="b" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- ReLU arrow -->
+        <mxCell id="a-relu-arrow" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.3;fillColor=#C0C0C0;strokeColor=#808080;" vertex="1" parent="1">
+          <mxGeometry x="400" y="115" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="a-relu-label" value="ReLU" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="405" y="120" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Intermediate output stack -->
+        <mxCell id="a-inter-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="80" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a-inter-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="90" width="70" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a-inter-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="100" width="70" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a-nof-inter" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;of&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="490" y="190" width="35" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Equals sign -->
+        <mxCell id="a-equals" value="=" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="580" y="120" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Output volume O(:,:,1) -->
+        <mxCell id="a-output-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="50" width="110" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="a-output-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#808080;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="60" width="110" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="a-output-1" value="O(:,:,1)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="640" y="70" width="110" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Output dimension labels -->
+        <mxCell id="a-noy" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;oy&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="760" y="110" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-noy-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="70" as="sourcePoint" />
+            <mxPoint x="755" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a-nof-out" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;of&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="640" y="210" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nof-out-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="200" as="sourcePoint" />
+            <mxPoint x="660" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="a-nox" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;ox&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="680" y="210" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a-nox-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="205" as="sourcePoint" />
+            <mxPoint x="750" y="205" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== Part (b) - RGB input convolution ==================== -->
+
+        <mxCell id="label-b" value="&lt;i&gt;(b)&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="30" y="360" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- RGB Input I - 3 colored channels -->
+        <mxCell id="b-input-r" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FF6666;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="b-input-g" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#66CC66;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="290" width="120" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="b-input-b" value="I" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#6699FF;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="120" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Input dimensions labels (b) -->
+        <mxCell id="b-niy" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;iy&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="350" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-niy-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="70" y="300" as="sourcePoint" />
+            <mxPoint x="70" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="b-3" value="3" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="80" y="450" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-3-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="440" as="sourcePoint" />
+            <mxPoint x="100" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="b-nix" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;ix&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="130" y="450" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-nix-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="445" as="sourcePoint" />
+            <mxPoint x="200" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Convolution symbol (b) -->
+        <mxCell id="b-conv" value="∗" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="230" y="360" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Filter F(:,:,1) label -->
+        <mxCell id="b-filter-label" value="F(:,:,1)" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="60" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Bias b (b) -->
+        <mxCell id="b-bias" value="b" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="310" y="310" width="25" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Filter stack with + signs -->
+        <mxCell id="b-filter-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D0D0D0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="340" width="50" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="b-plus1" value="+" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="350" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-filter-2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D0D0D0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="355" width="50" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="b-plus2" value="+" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="320" y="365" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-filter-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D0D0D0;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="370" width="50" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Filter dimension labels (b) -->
+        <mxCell id="b-nfy" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;fy&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="380" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-nfy-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="345" y="370" as="sourcePoint" />
+            <mxPoint x="345" y="425" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="b-3f" value="3" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="440" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-3f-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="425" as="sourcePoint" />
+            <mxPoint x="300" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="b-nfx" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;fx&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="440" width="35" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-nfx-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="430" as="sourcePoint" />
+            <mxPoint x="330" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ReLU arrow (b) -->
+        <mxCell id="b-relu-arrow" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;arrowWidth=0.4;arrowSize=0.3;fillColor=#C0C0C0;strokeColor=#808080;" vertex="1" parent="1">
+          <mxGeometry x="380" y="360" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="b-relu-label" value="ReLU" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="385" y="365" width="50" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Intermediate single output -->
+        <mxCell id="b-inter" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#707070;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="340" width="70" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Equals sign (b) -->
+        <mxCell id="b-equals" value="=" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="550" y="360" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Output single feature map O(:,:,1) -->
+        <mxCell id="b-output" value="O(:,:,1)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#909090;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="600" y="310" width="110" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Output dimension labels (b) -->
+        <mxCell id="b-noy" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;oy&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="720" y="355" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-noy-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="715" y="310" as="sourcePoint" />
+            <mxPoint x="715" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="b-nox" value="&lt;i&gt;N&lt;/i&gt;&lt;sub&gt;ox&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="640" y="450" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="b-nox-arrow" value="" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="445" as="sourcePoint" />
+            <mxPoint x="710" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
